@@ -225,7 +225,7 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #{{ site.data.template.color.primary }};
+    background-color: #{{ site.data.template.color.secondary-dark }};
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
@@ -236,9 +236,9 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
-        padding: 25px 0;
+        padding: 10px 0;
         border: 0;
-        background-color: transparent;
+        background-color: #222;
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
@@ -261,50 +261,29 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
+        font-size: 2em;
     }
 }
+
 
 header {
     text-align: center;
-    color: #fff;
+    color: #F7F7F7;
+    background-color: #F7F7F7;
     background-attachment: scroll;
     background-image: url('{{ site.baseurl }}/img/header-bg.jpg');
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    -o-background-size: contain;
+    padding: 300px;
 }
 
-header .intro-text {
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
-
-header .intro-text .intro-lead-in {
-    margin-bottom: 25px;
-    font-family: {{ site.data.template.font.secondary }};
-    font-size: 22px;
-    font-style: italic;
-    line-height: 22px;
-}
-
-header .intro-text .intro-heading {
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    font-family: {{ site.data.template.font.primary }};
-    font-size: 50px;
-    font-weight: 700;
-    line-height: 50px;
-}
 
 @media(min-width:768px) {
-    header .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px;
-    }
+    header .intro-text,
 
     header .intro-text .intro-lead-in {
         margin-bottom: 25px;
@@ -319,13 +298,13 @@ header .intro-text .intro-heading {
         text-transform: uppercase;
         font-family: {{ site.data.template.font.primary }};
         font-size: 75px;
-        font-weight: 700;
+        font-weight: 700; 
         line-height: 75px;
     }
 }
 
 section {
-    padding: 100px 0;
+    padding: 1000px 0;
 }
 
 section h2.section-heading {
@@ -345,7 +324,7 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        padding: 150px 0;
+        padding: 100px 0;
     }
 }
 
@@ -733,12 +712,17 @@ footer span.copyright {
     line-height: 40px;
 }
 
-footer ul.quicklinks {
+ul.quicklinks {
     margin-bottom: 0;
     text-transform: uppercase;
     text-transform: none;
     font-family: {{ site.data.template.font.primary }};
     line-height: 40px;
+}
+
+ul.quicklinks li a {
+    color: #{{ site.data.template.color.tertiary }};
+
 }
 
 ul.social-buttons {
@@ -750,7 +734,7 @@ ul.social-buttons li a {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    font-size: 20px;
+    font-size: 20px; 
     line-height: 40px;
     outline: 0;
     color: #fff;
@@ -760,7 +744,9 @@ ul.social-buttons li a {
     transition: all .3s;
 }
 
-ul.social-buttons li a:hover,
+ul.social-buttons li a:hover {
+    background-color: #{{ site.data.template.color.secondary }};
+}
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
     background-color: #{{ site.data.template.color.primary }};
