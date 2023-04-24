@@ -1,5 +1,5 @@
 ---
-title: Coming Soon...
+title: Unannounced Title
 subtitle: Website Design
 layout: default
 modal-id: 1
@@ -10,6 +10,6 @@ alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
 category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+description: We're working on an unannounced futuristic sci-fi game, in an original IP, with deep systemic gameplay and a compelling story-driven narrative at its core. <br> <br> Sign up for the newsletter to be the first to hear about it!
 
 ---
