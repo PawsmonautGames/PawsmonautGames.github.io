@@ -897,3 +897,7 @@ body {
     margin-top: -75px;
     text-align: center;
 }
+
+.footer-content {
+    color: #{{ site.data.template.color.primary }};
+}
