@@ -4,7 +4,7 @@ url: www.pawsmonaut.games
 # Site settings
 title: Pawsmonaut Games
 email: hello@pawsmonaut.games
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+description: "Pawsmonaut Games is a proud Scottish independent game development studio, founded in 2023 to create deep, compelling experiences without micro-transactions, battle passes or predatory monetisation."
 
 
 # Team names, titles and social links
@@ -26,16 +26,18 @@ people:
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
-  - title: twitter
+  - title: fa-brands fa-twitter
     url: http://twitter.com/Beacon_Dev
-  - title: envelope
+  - title: fa-solid fa-envelope
     url: mailto:hello@pawsmonaut.games
+  - title: fa-brands fa-discord
+    url: https://discord.gg/q95dqvKmxk
 
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: 3481 Melrose Place
-  - line: Beverly Hills, CA 90210
+  - line:
+  - line:
 
 # Build settings
 markdown: kramdown

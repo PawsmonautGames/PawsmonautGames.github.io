@@ -1,11 +1,11 @@
 ---
-title: Unannounced Title
+title: Unannounced Sci-Fi Title
 subtitle: Website Design
 layout: default
 modal-id: 1
 date: 2014-07-18
-img: dreams.png
-thumbnail: dreams-thumbnail.png
+img: placeholder_2.png
+thumbnail: placeholder_2.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
