@@ -278,8 +278,17 @@ header {
     -moz-background-size: contain;
     background-size: contain;
     -o-background-size: contain;
-    padding: 200px;
-    margin-top: 70px;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+@media(min-width:300px) {
+    header {
+        padding: 200px;
+        margin-top: 70px;
+        margin-bottom: 0px;
+    }
 }
 
 
@@ -617,10 +626,11 @@ section h3.section-subheading {
 }
 
 .team-member {
-    margin-bottom: 25px;
+    margin-bottom: 60px;
     margin-top: -50px;
     text-align: center;
 }
+
 
 .team-member img {
     margin: 0 auto;
@@ -892,6 +902,14 @@ body {
     text-align: center;
 }
 
+@media(min-width:768px) {
+    .mailing-list-header {
+        margin-bottom: -50px;
+        margin-top: -0px;
+        text-align: center;
+    }
+}
+
 .games-header {
     margin-bottom: -50px;
     margin-top: -75px;
@@ -901,3 +919,38 @@ body {
 .footer-content {
     color: #{{ site.data.template.color.primary }};
 }
+
+@media all and (min-width:960px) and (max-width: 1024px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
+  
+  @media all and (min-width:801px) and (max-width: 959px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
+  
+  @media all and (min-width:769px) and (max-width: 800px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
+  
+  @media all and (min-width:569px) and (max-width: 768px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
+  
+  @media all and (min-width:481px) and (max-width: 568px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
+  
+  @media all and (min-width:321px) and (max-width: 480px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
+  
+  @media all and (min-width:0px) and (max-width: 320px) {
+    margin-bottom: 100px;
+    margin-top: -50px;
+  }
