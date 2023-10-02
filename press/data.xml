@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+  <title>Pawsmonaut Games</title>
+  <based-in>Edinburgh, Scotland</based-in>
+  <founding-date>May, 2023</founding-date>
+  <website>https://www.pawsmonaut.games</website>
+  <press-contact>
+    hello@pawsmonaut.games
+  </press-contact>
+
+  <!-- Google analytics ID: -->
+  <analytics>G-KQ76PTGG08</analytics>
+
+  <socials>
+    <social>
+      <name>Twitter / X</name>
+      <link>
+		  https://twitter.com/Beacon_Dev
+	  </link>
+		
+    </social>
+	  <social>
+		  <name>Bluesky</name>
+		  <link>
+			  https://bsky.app/profile/beacondev.bsky.social
+		  </link>
+	  </social>
+	  <social>
+		  <name>LinkedIn</name>
+		  <link>
+			  https://www.linkedin.com/in/alex-kane-60997683/
+		  </link>
+	  </social>
+  </socials>
+
+  <description>
+	  Pawsmonaut Games is a proud Scottish solo-indie game development studio, founded in 2023 to create deep, compelling experiences without micro-transactions, battle passes or predatory monetisation. 
+	  
+	  We are currently working on our debut title, Meridian: Frontier. 
+  </description>
+
+  <!-- Choose between a single block: -->
+  <history>
+	  After seven years working in AAA studios and start-ups such as Rockstar North, Splash Damage and Build a Rocket Boy, Alex Kane started Pawsmonaut to make games differently. &#xD;
+	  AAA quality, Indie heart.
+  </history>
+
+  <trailers>
+    <trailer>
+      <name>Meridian: Frontier - Announce Trailer</name>
+
+      <!-- Pick one: -->
+      <youtube>
+		  UqILzqs27BA
+	  </youtube>
+
+    </trailer>
+  </trailers>
+
+
+
+  <credits>
+    <credit>
+      <person>Alex Kane</person>
+      <role>Founder</role>
+    </credit>
+  </credits>
+</company>
