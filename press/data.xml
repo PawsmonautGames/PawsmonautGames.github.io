@@ -37,7 +37,7 @@
 	  Pawsmonaut Games is a proud Scottish solo-indie game development studio, founded in 2023 to create deep, compelling experiences without micro-transactions, battle passes or predatory monetisation. 
 	  
 	  We are currently working on our debut title, Meridian: Frontier. 
-  </description>
+  </description> 
 
   <!-- Choose between a single block: -->
   <history>
@@ -55,6 +55,14 @@
 	  </youtube>
 
     </trailer>
+	  <trailer>
+		<name>Meridian: Frontier - Gameplay Sizzle Reel</name>
+
+		<!-- Pick one: -->
+		<youtube>
+			wKIN78cM6MQ
+		</youtube>
+	  </trailer>
   </trailers>
 
 

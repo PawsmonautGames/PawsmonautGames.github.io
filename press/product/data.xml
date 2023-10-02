@@ -2,7 +2,7 @@
 <game>
   <title>Meridian: Frontier</title>
   <release-date>TBA</release-date>
-  <website>https://store.steampowered.com/app/2541530/Meridian_Frontier/?utm_source=presskit&utm_campaign=announcement</website>
+  <website>https://store.steampowered.com/app/2541530/Meridian_Frontier/?utm_source=presskit&amp;utm_campaign=announcement</website>
 
   <!-- Link to request press copy: -->
   <press-copy-request></press-copy-request>
@@ -43,7 +43,7 @@
   </histories>
   -->
 
-  <features>
+  <features> 
     <feature>
 		Stylised low-poly, high-fidelity graphics powered by Unreal Engine 5. 
 	</feature> 
