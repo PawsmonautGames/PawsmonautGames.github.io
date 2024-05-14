@@ -1,16 +1,17 @@
 ---
-title: "Meridian: Frontier"
+title: "AETHUS"
 subtitle: Website Design
 layout: default
 modal-id: 1
 date: 2014-07-18
-img: call_to_action_2.jpg
-thumbnail: call_to_action_2.jpg
+img: call_to_action_2.png
+thumbnail: call_to_action_2.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
 category: Web Development
-description: "Meridian: Frontier is a story-driven 'survival-lite' base-building adventure game with a unique low-poly ¾ view style and deep, systemic gameplay. <br> <br>
-	  Explore a futuristic sci-fi underground world to mine and prospect for the valuable resources you need to build up your mining colony.<br> <br>Explore the world and features of the game on the Steam page, via the widget below!"
+description: "AETHUS is a story-driven survival game with a unique low-poly isometric style and deep, systemic gameplay. <br> <br>
+	  Explore a futuristic sci-fi underground world to mine and prospect for the valuable resources you need to build up your cosy mining outpost<br> <br>
+	  Explore the world and features of the game on the Steam page, via the widget below!"
 
 ---
