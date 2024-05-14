@@ -36,7 +36,7 @@
   <description>
 	  Pawsmonaut Games is a proud Scottish solo-indie game development studio, founded in 2023 to create deep, compelling experiences without micro-transactions, battle passes or predatory monetisation. 
 	  
-	  We are currently working on our debut title, Meridian: Frontier. 
+	  We are currently working on our debut title, AETHUS. 
   </description> 
 
   <!-- Choose between a single block: -->
@@ -47,7 +47,7 @@
 
   <trailers>
     <trailer>
-      <name>Meridian: Frontier - Announce Trailer</name>
+      <name>AETHUS - Announce Trailer</name>
 
       <!-- Pick one: -->
       <youtube>
@@ -56,7 +56,7 @@
 
     </trailer>
 	  <trailer>
-		<name>Meridian: Frontier - Gameplay Sizzle Reel</name>
+		<name>AETHUS - Gameplay Sizzle Reel</name>
 
 		<!-- Pick one: -->
 		<youtube>

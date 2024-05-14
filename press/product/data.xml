@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
-  <title>Meridian: Frontier</title>
+  <title>AETHUS</title>
   <release-date>TBA</release-date>
-  <website>https://store.steampowered.com/app/2541530/Meridian_Frontier/?utm_source=presskit&amp;utm_campaign=announcement</website>
+  <website>https://store.steampowered.com/app/2541530/AETHUS/?utm_source=presskit&amp;utm_campaign=announcement</website>
 
   <!-- Link to request press copy: -->
   <press-copy-request></press-copy-request>
@@ -22,14 +22,14 @@
   </prices>
 
   <description>
-	  Meridian: Frontier is a story-driven 'lite-survival' base-building adventure game with a unique low-poly ¾ view style and deep, systemic gameplay. 
-	  Explore a futuristic sci-fi underground world to mine and prospect for the valuable resources you need to build up your mining colony.
+	  AETHUS is a story-driven survival game with a low-poly isometric style and deep, systemic gameplay. 
+    Explore a futuristic underground world to mine and prospect for the valuable resources you need to build up your mining outpost, while unraveling a dystopian corporate conspiracy.
   </description>
 
   <!-- Choose between a single block: -->
   <history>
 	  After leaving the AAA games industry, Alex's first project of his own always had to be a sci-fi survival game. 
-	  Inspired both by classics like Lego Rock Raiders and modern survival gems like Subnautica, Meridian: Frontier is a love letter 
+	  Inspired both by classics like Lego Rock Raiders and modern survival gems like Subnautica, AETHUS is a love letter 
 	  to story-driven singleplayer exploration, built around compelling physics-based gathering and base-building features.
   </history>
 
@@ -51,11 +51,8 @@
 		Mine and prospect for resources in a compelling, physics-based, futuristic sci-fi world.
 	</feature>
     <feature>
-		Build up a mining colony - construct buildings and facilities, acquire new plans and decorate with extensive cosmetic options.
+		Build up a mining outpost - construct buildings and facilities, acquire new plans and decorate with extensive cosmetic options.
 	</feature>
-    <feature>
-		'Lite-survival' gameplay. No food or drink to manage, but the planet is a hostile environment and it won't be easy to make your fortune.
-	</feature> 
 	  <feature>
 		Deep, story-driven exploration - follow in the boot-prints of a previous expedition and navigate a world of dystopian ultra-capitalism.
 	</feature> 
@@ -75,7 +72,7 @@
 	
 <trailers>
 	<trailer>
-		<name>Meridian: Frontier - Announce Trailer</name>
+		<name>AETHUS - Announce Trailer</name>
 
 		<!-- Pick one: -->
 		<youtube>
@@ -84,7 +81,7 @@
 
 	</trailer>
 	<trailer>
-		<name>Meridian: Frontier - Gameplay Sizzle Reel</name>
+		<name>AETHUS - Gameplay Sizzle Reel</name>
 
 		<!-- Pick one: -->
 		<youtube>
@@ -105,22 +102,6 @@
     <credit>
       <person>Alex Kane</person>
       <role>Solo-Developer</role>
-    </credit>
-	  <credit>
-      <person>Lisa Venturini</person>
-      <role>2D Art</role>
-    </credit>	    
-	  <credit>
-      <person>Kenned Gadelha</person>
-      <role>Concept Art</role>
-    </credit> 
-	  <credit>
-      <person>Madison James Smith</person>
-      <role>Composer</role>
-    </credit>
-	  <credit>
-      <person>Daniel Bletherwick</person>
-      <role>Audio Design</role>
     </credit>
   </credits>
  
