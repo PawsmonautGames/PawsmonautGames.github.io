@@ -4,8 +4,8 @@ subtitle: Website Design
 layout: default
 modal-id: 1
 date: 2014-07-18
-img: call_to_action_2.png
-thumbnail: call_to_action_2.png
+img: Header Capsule.png
+thumbnail: Header Capsule.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
