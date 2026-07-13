@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game>
+  <title>FATHOM</title>
+  <release-date>To be announced</release-date>
+  <website></website>
+
+  <press-copy-request></press-copy-request>
+
+  <platforms>
+    <platform>
+      <name>To be announced</name>
+      <link></link>
+    </platform>
+  </platforms>
+
+  <prices>
+    <price>
+      <currency>TBA</currency>
+      <value></value>
+    </price>
+  </prices>
+
+  <description>
+    As-yet unannounced, FATHOM is a laid-back desktop companion idler game set in an alien ocean.
+  </description>
+
+  <credits>
+    <credit>
+      <person>Alex Kane</person>
+      <role>Solo-Developer</role>
+    </credit>
+  </credits>
+
+</game>
