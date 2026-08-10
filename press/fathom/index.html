@@ -134,15 +134,17 @@
             <h2 id="images">Screenshots (with UI)</h2>
 
             <div class="gallery clearfix" id="gallery">
-              <div class="gallery__item">
-                <a href="images/fathom-01-platform.png">
-                  <img src="images/fathom-01-platform.png" alt="Platform construction and dive control">
+              <div class="gallery__sizer"></div>
+
+              <div class="gallery__item gallery__item--wide">
+                <a href="images/fathom-01-overview.png">
+                  <img src="images/fathom-01-overview.png" alt="The full FATHOM interface: system, sonar, surface, dive control, research tree, stock, containment tank and regional chart panels">
                 </a>
               </div>
 
-              <div class="gallery__item">
-                <a href="images/fathom-02-submersibles.png">
-                  <img src="images/fathom-02-submersibles.png" alt="Submersible bay, regional chart and containment tank">
+              <div class="gallery__item gallery__item--wide">
+                <a href="images/fathom-02-charter.png">
+                  <img src="images/fathom-02-charter.png" alt="Early game: charter contract goals, platform construction menu and the surface base at dawn">
                 </a>
               </div>
             </div>
@@ -191,7 +193,9 @@
 
             imagesLoaded(gallery, function onImagesLoaded() {
               new Masonry(gallery, {
-                itemSelector: '.gallery__item'
+                itemSelector: '.gallery__item',
+                columnWidth: gallery.querySelector('.gallery__sizer') ? '.gallery__sizer' : '.gallery__item',
+                percentPosition: true
               });
             });
           })(i);
