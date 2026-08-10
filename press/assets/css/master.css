@@ -405,6 +405,23 @@ a:hover {
   }
 }
 
+/* Invisible element Masonry measures for its column width, so a full-width
+   item doesn't collapse the grid to a single column. */
+.gallery__sizer {
+  width: 100%;
+}
+
+/* Ultra-wide shots need the full row or they render as a sliver. */
+.gallery__item--wide {
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+  .gallery__sizer {
+    width: 50%;
+  }
+}
+
 /* ---------------------------------------------------------- *\
  * Components - Logo.
 \* ---------------------------------------------------------- */
