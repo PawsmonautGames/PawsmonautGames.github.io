@@ -1,0 +1,16 @@
+---
+title: "Tidy Up the Town"
+subtitle: Cozy Tidy-Up Game
+layout: default
+modal-id: 2
+date: 2026-09-09
+img: Tidy Up the Town Header Capsule.png
+thumbnail: Tidy Up the Town Header Capsule.png
+alt: image-alt
+steam-appid: 5190030
+presskit: https://www.pawsmonaut.games/press/tidyupthetown/
+description: "Tidy Up the Town is a cozy tidy-up game where your apprentice-level magical mishaps have caused the entire contents of the town's market stalls to end up strewn around the main square...<br> <br>
+	  Power up and upgrade your magical abilities to collect and sort hundreds of different items into their correct market stalls and shelves for the merchants, and bring life back to your town!<br> <br>
+	  Explore the world and features of the game on the Steam page, via the widget below!"
+
+---
