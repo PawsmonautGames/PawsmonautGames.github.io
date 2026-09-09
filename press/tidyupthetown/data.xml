@@ -4,7 +4,6 @@
   <release-date>September 28, 2026</release-date>
   <website></website>
 
-  <!-- Link to request press copy: -->
   <press-copy-request></press-copy-request>
 
   <platforms>
@@ -22,37 +21,28 @@
   </prices>
 
   <description>
-	  As-yet unannounced, Tidy Up the Town is a cosy first-person tidy-up game set in a medieval market square.
-	  Something went through the market in the night and turned every stall out into the street. Put it all back, and the town comes back with it.
-  </description>
+	  Tidy Up the Town is a cozy tidy-up game where your apprentice-level magical mishaps have caused the entire contents
+	  of the town's market stalls to end up strewn around the main square...
 
-  <history>
-	  After AETHUS, Alex wanted to make something with no clock, no fail state and nothing in the world that undoes your work.
-	  Tidy Up the Town takes the shelf-stocking games' pleasure - many distinct things, each gathered up and put where it belongs - and hands it a catalogue
-	  everyone already knows how to sort. A fish goes to the fishmonger. A hammer goes to the smith. Nobody has to be taught the rule.
-  </history>
+	  Power up and upgrade your magical abilities to collect and sort hundreds of different items into their correct
+	  market stalls and shelves for the merchants, and bring life back to your town!
+  </description>
 
   <features>
     <feature>
-		Two verbs and nothing pushing back - pick a thing up, carry up to three, and take each to the stall it belongs to. No clock, no customers, no fail state, and nothing in the square that undoes your work.
+		1,000 items across 10 different market stalls including Blacksmith, Apothecary, Scribe, Butcher and more!
 	</feature>
     <feature>
-		The sorting rule is the goods themselves - hundreds of medieval market wares, from bread and fish to rings, tankards and chess pieces, each belonging to a trade you already know.
+		Full Controller support.
 	</feature>
     <feature>
-		But the exact spot is yours to choose - an axe fits any weapon rack. The first axe you put in one makes that rack the axe rack, and every other axe joins it.
+		Unlock magical Spells and Abilities to speed up your sorting.
 	</feature>
     <feature>
-		Fill a stall and its merchant comes home - shutters go up, a trader takes their place behind the counter, and the aisle between them picks up a customer, a child, a dog, a busker. The reward for tidying is the place becoming inhabited.
+		Obtainable animal companions.
 	</feature>
     <feature>
-		Spells, not kit - unseen hands that carry for you, a longer reach, a gilt edge on every stray of the kind you are holding, and a pillar of light that catches whatever you throw into it. Every one buys efficiency, never power.
-	</feature>
-    <feature>
-		A market that keeps the real calendar - the square dresses itself for the season and the festival on the day it actually falls.
-	</feature>
-    <feature>
-		Stylised low-poly visuals at golden hour, built in Godot 4.
+		No time limits, no game over state. Tidy Up at your own pace.
 	</feature>
   </features>
 
