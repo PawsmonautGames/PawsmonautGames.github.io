@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fewest Steps - Tidy Up the Town</title>
+  <meta name="description" content="The Fewest Steps leaderboard for Tidy Up the Town: tidy the whole market in as few steps as you can.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.pawsmonaut.games; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Open+Sans:400,600,700&display=swap">
+  <link rel="stylesheet" href="leaderboard.css">
+  <script src="leaderboard.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <a class="home" href="/">Pawsmonaut Games</a>
+  </header>
+
+  <main class="wrap">
+    <p class="kicker">Tidy Up the Town</p>
+    <h1>Fewest Steps</h1>
+    <p class="lede">Put the whole market back in order in as few steps as you can. Every spell that saves you a walk is fair game.</p>
+
+    <nav class="tabs" id="tabs" aria-label="Boards"></nav>
+
+    <section class="board" aria-live="polite">
+      <p class="status" id="status">Loading the boards...</p>
+      <table id="table" hidden>
+        <thead>
+          <tr>
+            <th class="rank" scope="col">#</th>
+            <th scope="col">Name</th>
+            <th class="num" scope="col">Steps</th>
+            <th class="num" scope="col">Time</th>
+            <th class="num hide-narrow" scope="col">Spells</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="count" id="count"></p>
+    </section>
+
+    <section class="about">
+      <h2>How it works</h2>
+      <p>Each player's best finished run is shown. Fewer steps ranks higher; a tie goes to the quicker run, then to whoever got there first. Each season's market has a board of its own.</p>
+      <p>Taking part is your choice, and you can leave and delete your entries at any time from <strong>Settings &gt; Privacy</strong> in the game. See the <a href="/privacypolicy.html#leaderboards">privacy policy</a> for exactly what is sent and kept.</p>
+      <p>Runs that look impossible are removed.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="/">pawsmonaut.games</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="/privacypolicy.html">Privacy</a>
+  </footer>
+</body>
+</html>
