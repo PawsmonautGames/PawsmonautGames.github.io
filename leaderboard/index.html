@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Kaushan+Script|Droid+Serif:400,700,400italic|Roboto+Slab:400,700&display=swap">
   <link rel="stylesheet" href="leaderboard.css">
+  <script src="i18n.js" defer></script>
   <script src="leaderboard.js" defer></script>
 </head>
 <body>
@@ -19,34 +20,39 @@
     <div class="navbar-inner">
       <a class="brand" href="/">Pawsmonaut Games</a>
       <ul class="links">
-        <li><a href="/#team">Team</a></li>
-        <li><a href="/#portfolio">Games</a></li>
-        <li><a href="/leaderboard/" aria-current="page">Leaderboard</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#team" data-i18n="nav_team">Team</a></li>
+        <li><a href="/#portfolio" data-i18n="nav_games">Games</a></li>
+        <li><a href="/leaderboard/" aria-current="page" data-i18n="nav_leaderboard">Leaderboard</a></li>
+        <li><a href="/#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
+      <label class="lang">
+        <span class="sr-only" data-i18n="language">Language</span>
+        <select id="lang"></select>
+      </label>
     </div>
   </nav>
 
   <section class="hero">
     <img class="logo" src="tidyupthetown-logo.png" width="1320" height="300" alt="Tidy Up the Town">
-    <h1>Fewest Steps</h1>
-    <p class="subheading">Clean up the market in as few steps as you can! Use your spells to save you steps to progress up the rankings.</p>
+    <h1 data-i18n="title">Fewest Steps</h1>
+    <p class="subheading" data-i18n="lede">Clean up the market in as few steps as you can! Use your spells to save you steps to progress up the rankings.</p>
   </section>
 
   <section class="content">
     <div class="wrap">
-      <div class="tabs" id="tabs" aria-label="Boards"></div>
+      <div class="tabs" id="tabs" role="tablist"></div>
 
       <div class="board" aria-live="polite">
-        <p class="status" id="status">Loading the boards...</p>
+        <p class="status" id="status" data-i18n="loading_boards">Loading the boards...</p>
         <table id="table" hidden>
           <thead>
             <tr>
               <th class="rank" scope="col">#</th>
-              <th scope="col">Name</th>
-              <th class="num" scope="col">Steps</th>
-              <th class="num" scope="col">Time</th>
-              <th class="num hide-narrow" scope="col">Spells</th>
+              <th scope="col" data-i18n="th_name">Name</th>
+              <th class="num" scope="col" data-i18n="th_steps">Steps</th>
+              <th class="num" scope="col" data-i18n="th_time">Time</th>
+              <th class="num hide-narrow" scope="col" data-i18n="th_spells">Spells</th>
+              <th class="num hide-narrow" scope="col" data-i18n="th_quicksteps">Quicksteps</th>
             </tr>
           </thead>
           <tbody id="rows"></tbody>
@@ -55,10 +61,10 @@
       </div>
 
       <div class="about">
-        <h2>How it works</h2>
-        <p>The best finished game for each player is shown. Fewer steps needed ranks higher, and ties are broken by the quicker run. Each season has its own leaderboard.</p>
-        <p>Taking part is your choice, and you can leave and delete your entries at any time from <strong>Settings &gt; Privacy</strong> in the game. See the <a href="/privacypolicy.html#leaderboards">privacy policy</a> for exactly what is sent and kept.</p>
-        <p>Runs that look impossible are removed at the discretion of the developer.</p>
+        <h2 data-i18n="how_title">How it works</h2>
+        <p data-i18n="how_1">The best finished game for each player is shown. Fewer steps needed ranks higher, and ties are broken by the quicker run. Each season has its own leaderboard.</p>
+        <p id="how-2">Taking part is your choice, and you can leave and delete your entries at any time from <strong>Settings &gt; Privacy</strong> in the game. See the <a href="/privacypolicy.html#leaderboards">privacy policy</a> for exactly what is sent and kept.</p>
+        <p data-i18n="how_3">Runs that look impossible are removed at the discretion of the developer.</p>
       </div>
     </div>
   </section>
@@ -66,10 +72,10 @@
   <!-- The main site's footer. -->
   <footer class="footer">
     <div class="footer-inner">
-      <span class="copyright">Copyright &copy; Pawsmonaut Games <span id="year">2026</span></span>
+      <span class="copyright" id="copyright">Copyright &copy; Pawsmonaut Games</span>
       <ul class="quicklinks">
-        <li><a href="/privacypolicy.html">Privacy Policy</a></li>
-        <li><a href="/termsofuse.html">Terms of Use</a></li>
+        <li><a href="/privacypolicy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="/termsofuse.html" data-i18n="terms">Terms of Use</a></li>
       </ul>
     </div>
   </footer>
