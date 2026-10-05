@@ -123,5 +123,8 @@
     return { board: "x", of: season ? 6 : 214, rank: null, top: top, around: [] };
   }
 
+  var year = document.getElementById("year");
+  if (year) year.textContent = String(new Date().getFullYear());
+
   start();
 })();
