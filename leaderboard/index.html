@@ -6,53 +6,72 @@
   <title>Fewest Steps - Tidy Up the Town</title>
   <meta name="description" content="The Fewest Steps leaderboard for Tidy Up the Town: clean up the market in as few steps as you can, and use your spells to climb the rankings.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.pawsmonaut.games; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Open+Sans:400,600,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Kaushan+Script|Droid+Serif:400,700,400italic|Roboto+Slab:400,700&display=swap">
   <link rel="stylesheet" href="leaderboard.css">
   <script src="leaderboard.js" defer></script>
 </head>
 <body>
-  <header class="top">
-    <a class="home" href="/">Pawsmonaut Games</a>
-  </header>
+  <!-- The main site's navigation bar, with its links pointed back at the home page. -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">Pawsmonaut Games</a>
+      <ul class="links">
+        <li><a href="/#team">Team</a></li>
+        <li><a href="/#portfolio">Games</a></li>
+        <li><a href="/leaderboard/" aria-current="page">Leaderboard</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <main class="wrap">
-    <p class="kicker">Tidy Up the Town</p>
+  <section class="hero">
+    <img class="logo" src="tidyupthetown-logo.png" width="1320" height="300" alt="Tidy Up the Town">
     <h1>Fewest Steps</h1>
-    <p class="lede">Clean up the market in as few steps as you can! Use your spells to save you steps to progress up the rankings.</p>
+    <p class="subheading">Clean up the market in as few steps as you can! Use your spells to save you steps to progress up the rankings.</p>
+  </section>
 
-    <nav class="tabs" id="tabs" aria-label="Boards"></nav>
+  <section class="content">
+    <div class="wrap">
+      <div class="tabs" id="tabs" aria-label="Boards"></div>
 
-    <section class="board" aria-live="polite">
-      <p class="status" id="status">Loading the boards...</p>
-      <table id="table" hidden>
-        <thead>
-          <tr>
-            <th class="rank" scope="col">#</th>
-            <th scope="col">Name</th>
-            <th class="num" scope="col">Steps</th>
-            <th class="num" scope="col">Time</th>
-            <th class="num hide-narrow" scope="col">Spells</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-      <p class="count" id="count"></p>
-    </section>
+      <div class="board" aria-live="polite">
+        <p class="status" id="status">Loading the boards...</p>
+        <table id="table" hidden>
+          <thead>
+            <tr>
+              <th class="rank" scope="col">#</th>
+              <th scope="col">Name</th>
+              <th class="num" scope="col">Steps</th>
+              <th class="num" scope="col">Time</th>
+              <th class="num hide-narrow" scope="col">Spells</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p class="count" id="count"></p>
+      </div>
 
-    <section class="about">
-      <h2>How it works</h2>
-      <p>The best finished game for each player is shown. Fewer steps needed ranks higher, and ties are broken by the quicker run. Each season has its own leaderboard.</p>
-      <p>Taking part is your choice, and you can leave and delete your entries at any time from <strong>Settings &gt; Privacy</strong> in the game. See the <a href="/privacypolicy.html#leaderboards">privacy policy</a> for exactly what is sent and kept.</p>
-      <p>Runs that look impossible are removed at the discretion of the developer.</p>
-    </section>
-  </main>
+      <div class="about">
+        <h2>How it works</h2>
+        <p>The best finished game for each player is shown. Fewer steps needed ranks higher, and ties are broken by the quicker run. Each season has its own leaderboard.</p>
+        <p>Taking part is your choice, and you can leave and delete your entries at any time from <strong>Settings &gt; Privacy</strong> in the game. See the <a href="/privacypolicy.html#leaderboards">privacy policy</a> for exactly what is sent and kept.</p>
+        <p>Runs that look impossible are removed at the discretion of the developer.</p>
+      </div>
+    </div>
+  </section>
 
-  <footer class="foot">
-    <a href="/">pawsmonaut.games</a>
-    <span aria-hidden="true">&middot;</span>
-    <a href="/privacypolicy.html">Privacy</a>
+  <!-- The main site's footer. -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="copyright">Copyright &copy; Pawsmonaut Games <span id="year">2026</span></span>
+      <ul class="quicklinks">
+        <li><a href="/privacypolicy.html">Privacy Policy</a></li>
+        <li><a href="/termsofuse.html">Terms of Use</a></li>
+      </ul>
+    </div>
   </footer>
 </body>
 </html>

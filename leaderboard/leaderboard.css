@@ -1,79 +1,121 @@
+/* Matches the main site (the Agency theme in /style.css): its dark navbar,
+   grey sections, Montserrat headings, Droid Serif subheadings and gold. */
 :root {
   --ink: #333;
   --muted: #777;
-  --paper: #fff;
-  --panel: #f6f4ef;
-  --line: #e2ded4;
-  --accent: #2980b9;
-  --gold: #b8860b;
-  --silver: #8a8f94;
-  --bronze: #a0622d;
-  --mine: #fff6d6;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #e8e6e1;
-    --muted: #a3a09a;
-    --paper: #16171a;
-    --panel: #202226;
-    --line: #34363b;
-    --accent: #6cb4e8;
-    --gold: #e0b44a;
-    --silver: #b7bcc2;
-    --bronze: #d08b52;
-    --mine: #3a3320;
-  }
+  --bar: #222;
+  --section: #f7f7f7;
+  --panel: #fff;
+  --line: #e4e4e4;
+  --gold: #fec503;
+  --gold-ink: #c99a00;
+  --silver: #8d9399;
+  --bronze: #b06b33;
+  --heading: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "Droid Serif", Georgia, serif;
 }
 
 * { box-sizing: border-box; }
-html { background: var(--paper); }
+html { background: var(--panel); }
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
-  font: 16px/1.6 "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  background: var(--panel);
+  font: 15px/1.6 "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-a { color: var(--accent); }
+a { color: var(--gold-ink); }
+a:hover, a:focus { color: var(--ink); }
 
-.top { padding: 16px; border-bottom: 1px solid var(--line); }
-.home { font-family: "Roboto Slab", Georgia, serif; font-weight: 700; color: var(--ink); text-decoration: none; }
+/* --- the main site's navbar -------------------------------------------- */
+.navbar { background: var(--bar); padding: 10px 0; }
+.navbar-inner {
+  max-width: 1170px; margin: 0 auto; padding: 0 15px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 16px;
+}
+.brand {
+  font: 30px/60px "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+  color: #f7f7f7; text-decoration: none; white-space: nowrap;
+}
+.brand:hover, .brand:focus { color: var(--gold); }
+.links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+.links a {
+  display: block; padding: 19.5px 15px;
+  font: 15px/21px var(--heading); text-transform: uppercase; letter-spacing: 1px;
+  color: #fff; text-decoration: none;
+}
+.links a:hover, .links a:focus { color: var(--gold); }
+.links a[aria-current="page"] { color: var(--gold); }
 
-.wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
-.kicker { margin: 0; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; font-size: 13px; font-weight: 600; }
-h1, h2 { font-family: "Roboto Slab", Georgia, serif; line-height: 1.15; }
-h1 { margin: 4px 0 12px; font-size: clamp(36px, 8vw, 56px); }
-h2 { font-size: 22px; margin: 40px 0 8px; }
-.lede { margin: 0 0 28px; font-size: 18px; color: var(--muted); max-width: 60ch; }
+/* --- hero: the game's logo, like the studio logo on the home page ------- */
+.hero { background: var(--section); text-align: center; padding: 48px 16px 40px; }
+.logo { display: block; width: 100%; max-width: 660px; height: auto; margin: 0 auto 28px; }
+h1, h2 { font-family: var(--heading); font-weight: 700; text-transform: uppercase; line-height: 1.1; }
+h1 { margin: 0 0 14px; font-size: 40px; }
+h2 { margin: 48px 0 12px; font-size: 24px; }
+.subheading {
+  margin: 0 auto; max-width: 640px;
+  font: italic 16px/1.65 var(--serif); color: var(--muted);
+}
 
-.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+/* --- the boards ---------------------------------------------------------- */
+.content { background: var(--panel); padding: 40px 16px 56px; }
+.wrap { max-width: 760px; margin: 0 auto; }
+
+.tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px; }
+.tabs:empty { display: none; }
 .tabs button {
-  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
-  padding: 6px 14px; border-radius: 999px;
-  color: var(--ink); background: var(--panel); border: 1px solid var(--line);
+  cursor: pointer; padding: 10px 20px; border-radius: 3px;
+  font: 700 14px var(--heading); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--ink); background: var(--panel); border: 2px solid var(--line);
 }
-.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tabs button:hover, .tabs button:focus-visible { border-color: var(--gold); }
+.tabs button[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: #fff; }
 
-.board { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 0; overflow-x: auto; }
-.status { margin: 0; padding: 24px 16px; color: var(--muted); text-align: center; }
+.board { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; }
+.status { margin: 0; padding: 32px 16px; text-align: center; font: italic 16px var(--serif); color: var(--muted); }
 table { width: 100%; border-collapse: collapse; }
-th, td { padding: 8px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+th, td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--line); }
 tbody tr:last-child td { border-bottom: 0; }
-th { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+tbody tr:nth-child(even) { background: #fbfbfb; }
+th {
+  font: 700 12px var(--heading); text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); background: var(--section);
+}
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-td.rank, th.rank { width: 3em; font-variant-numeric: tabular-nums; color: var(--muted); }
-td.name { overflow-wrap: anywhere; font-weight: 600; }
-tr.r1 td.rank { color: var(--gold); font-weight: 700; }
-tr.r2 td.rank { color: var(--silver); font-weight: 700; }
-tr.r3 td.rank { color: var(--bronze); font-weight: 700; }
-tr.gap td { padding: 2px 16px; color: var(--muted); text-align: center; border-bottom: 1px solid var(--line); }
-.count { margin: 0; padding: 8px 16px 4px; color: var(--muted); font-size: 13px; }
+td.rank, th.rank { width: 3.5em; text-align: center; font-variant-numeric: tabular-nums; }
+td.rank { font-family: var(--heading); color: var(--muted); }
+td.name { overflow-wrap: anywhere; font-weight: 700; }
+tr.r1 td.rank, tr.r2 td.rank, tr.r3 td.rank { font-weight: 700; }
+tr.r1 td.rank { color: var(--gold-ink); }
+tr.r2 td.rank { color: var(--silver); }
+tr.r3 td.rank { color: var(--bronze); }
+.count { margin: 0; padding: 10px 16px; border-top: 1px solid var(--line); color: var(--muted); font: italic 13px var(--serif); }
 .count:empty { display: none; }
 
-.about p { max-width: 65ch; }
-.foot { padding: 24px 16px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 14px; }
-.foot a { color: var(--muted); }
+.about { text-align: center; }
+.about p { max-width: 640px; margin: 0 auto 12px; }
 
+/* --- the main site's footer --------------------------------------------- */
+.footer { padding: 25px 0; border-top: 1px solid var(--line); }
+.footer-inner {
+  max-width: 1170px; margin: 0 auto; padding: 0 15px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px;
+  font-family: var(--heading);
+}
+.copyright { line-height: 40px; }
+.quicklinks { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+.quicklinks a { color: var(--bar); text-decoration: none; }
+.quicklinks a:hover, .quicklinks a:focus { color: var(--gold-ink); }
+
+@media (max-width: 767px) {
+  .navbar-inner { justify-content: center; }
+  .brand { font-size: 26px; line-height: 44px; }
+  .links { justify-content: center; }
+  .links a { padding: 6px 7px 12px; font-size: 12px; letter-spacing: .5px; }
+  h1 { font-size: 32px; }
+  .footer-inner { justify-content: center; text-align: center; }
+}
 @media (max-width: 480px) {
   .hide-narrow { display: none; }
-  th, td { padding: 8px 10px; }
+  th, td { padding: 9px 10px; }
 }
