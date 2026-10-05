@@ -37,6 +37,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-default"><a href="{{ post.presskit }}">PRESS KIT</a></button>
+                            {% if post.leaderboard %}<button type="button" class="btn btn-default"><a href="{{ post.leaderboard }}">LEADERBOARD</a></button>{% endif %}
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
