@@ -45,6 +45,16 @@ a:hover, a:focus { color: var(--ink); }
 }
 .links a:hover, .links a:focus { color: var(--gold); }
 .links a[aria-current="page"] { color: var(--gold); }
+.lang select {
+  font: 13px var(--heading); letter-spacing: .5px;
+  color: #fff; background: #333; border: 1px solid #555; border-radius: 3px;
+  padding: 6px 8px; cursor: pointer;
+}
+.lang select:hover, .lang select:focus { border-color: var(--gold); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 
 /* --- hero: the game's logo, like the studio logo on the home page ------- */
 .hero { background: var(--section); text-align: center; padding: 48px 16px 40px; }
@@ -111,6 +121,7 @@ tr.r3 td.rank { color: var(--bronze); }
   .navbar-inner { justify-content: center; }
   .brand { font-size: 26px; line-height: 44px; }
   .links { justify-content: center; }
+  .lang { margin: 2px 0 8px; }
   .links a { padding: 6px 7px 12px; font-size: 12px; letter-spacing: .5px; }
   h1 { font-size: 32px; }
   .footer-inner { justify-content: center; text-align: center; }
@@ -119,3 +130,8 @@ tr.r3 td.rank { color: var(--bronze); }
   .hide-narrow { display: none; }
   th, td { padding: 9px 10px; }
 }
+
+/* Chinese, Japanese and Korean have no italic: a slanted CJK font is a fake. */
+:lang(ja) .subheading, :lang(ko) .subheading, :lang(zh) .subheading,
+:lang(ja) .status, :lang(ko) .status, :lang(zh) .status,
+:lang(ja) .count, :lang(ko) .count, :lang(zh) .count { font-style: normal; }

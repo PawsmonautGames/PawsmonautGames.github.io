@@ -1,5 +1,9 @@
-// The Fewest Steps board, read from the leaderboard API. Every name and number
-// is set with textContent: a display name is data, never markup.
+// The Fewest Steps board, read from the leaderboard API, in the player's
+// language. Every name and number is set with textContent: a display name is
+// data, never markup.
+//
+// The language is, in order: ?lang= in the address, the one picked last time
+// on this browser, the browser's own languages, then English.
 //
 // Add ?demo to the address to see the page with made-up rows, for checking
 // the layout without the API (it only answers this site's own origin).
@@ -9,6 +13,8 @@
 
   var API = "https://api.pawsmonaut.games";
   var TOP = 50;
+  var STORE = "leaderboard-lang";
+  var I18N = window.LEADERBOARD_I18N;
   var demo = /[?&]demo\b/.test(location.search);
 
   var tabs = document.getElementById("tabs");
@@ -16,10 +22,117 @@
   var table = document.getElementById("table");
   var rows = document.getElementById("rows");
   var count = document.getElementById("count");
+  var picker = document.getElementById("lang");
+
+  var lang = "en";
+  var boards = [];
+  var current = null;
+  var lastStatus = "loading_boards";
+
+  // --- language ------------------------------------------------------------
+
+  // A browser language tag to one of ours: zh-TW/zh-HK/zh-Hant are
+  // Traditional, any other zh is Simplified, pt-BR is Brazilian, any other pt
+  // is European, and everything else goes by its first part.
+  function match(tag) {
+    var t = String(tag || "").toLowerCase().replace(/_/g, "-");
+    if (!t) return null;
+    if (t.indexOf("zh") === 0) {
+      return /-(tw|hk|mo|hant)\b/.test(t) ? "zh_TW" : "zh_CN";
+    }
+    if (t.indexOf("pt") === 0) return t === "pt-br" ? "pt_BR" : "pt";
+    var base = t.split("-")[0];
+    return I18N.strings[base] ? base : null;
+  }
+
+  function chooseLang() {
+    var asked = (location.search.match(/[?&]lang=([A-Za-z_-]+)/) || [])[1];
+    if (asked && (I18N.strings[asked] || match(asked))) return I18N.strings[asked] ? asked : match(asked);
+    try {
+      var stored = localStorage.getItem(STORE);
+      if (stored && I18N.strings[stored]) return stored;
+    } catch (e) { /* storage blocked: fall through */ }
+    var wanted = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+    for (var i = 0; i < wanted.length; i++) {
+      var found = match(wanted[i]);
+      if (found) return found;
+    }
+    return "en";
+  }
+
+  function t(key) {
+    var table = I18N.strings[lang] || I18N.strings.en;
+    return table[key] !== undefined ? table[key] : I18N.strings.en[key];
+  }
+
+  function fill(text, values) {
+    return text.replace(/\{(\w+)\}/g, function (all, name) {
+      return values[name] !== undefined ? String(values[name]) : all;
+    });
+  }
+
+  function num(n) {
+    return Number(n).toLocaleString(I18N.bcp47[lang] || "en");
+  }
+
+  // A sentence with {settings} and {policy} in it, built as nodes.
+  function buildHow2(into) {
+    into.textContent = "";
+    var parts = t("how_2").split(/(\{settings\}|\{policy\})/);
+    parts.forEach(function (part) {
+      if (part === "{settings}") {
+        var strong = document.createElement("strong");
+        strong.textContent = t("settings");
+        into.appendChild(strong);
+      } else if (part === "{policy}") {
+        var a = document.createElement("a");
+        a.href = "/privacypolicy.html#leaderboards";
+        a.textContent = t("policy");
+        into.appendChild(a);
+      } else if (part) {
+        into.appendChild(document.createTextNode(part));
+      }
+    });
+  }
+
+  function applyLang() {
+    document.documentElement.lang = I18N.bcp47[lang] || "en";
+    document.title = t("doc_title");
+    var marked = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < marked.length; i++) {
+      marked[i].textContent = t(marked[i].getAttribute("data-i18n"));
+    }
+    buildHow2(document.getElementById("how-2"));
+    document.getElementById("copyright").textContent =
+      fill(t("copyright"), { year: new Date().getFullYear() });
+    renderTabs();
+    if (current) show(current);
+    else say(lastStatus);
+  }
+
+  function buildPicker() {
+    I18N.order.forEach(function (code) {
+      var option = document.createElement("option");
+      option.value = code;
+      option.textContent = I18N.names[code];
+      picker.appendChild(option);
+    });
+    picker.value = lang;
+    picker.addEventListener("change", function () {
+      lang = picker.value;
+      try { localStorage.setItem(STORE, lang); } catch (e) { /* not remembered */ }
+      applyLang();
+    });
+  }
+
+  // --- the boards ----------------------------------------------------------
 
   function label(board) {
-    if (board === "standard") return "Standard";
-    var id = board.replace(/^season:/, "").replace(/_/g, " ");
+    if (board === "standard") return t("standard");
+    var id = board.replace(/^season:/, "");
+    var known = t(id);
+    if (known !== undefined) return known;
+    id = id.replace(/_/g, " ");
     return id.charAt(0).toUpperCase() + id.slice(1);
   }
 
@@ -38,8 +151,9 @@
     tr.appendChild(td);
   }
 
-  function say(text) {
-    statusLine.textContent = text;
+  function say(key) {
+    lastStatus = key;
+    statusLine.textContent = t(key);
     statusLine.hidden = false;
     table.hidden = true;
     count.textContent = "";
@@ -53,57 +167,64 @@
     });
   }
 
+  function renderTabs() {
+    tabs.textContent = "";
+    boards.forEach(function (board) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label(board);
+      b.dataset.board = board;
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", board === current ? "true" : "false");
+      b.addEventListener("click", function () { show(board); });
+      tabs.appendChild(b);
+    });
+  }
+
   function show(board) {
+    current = board;
     for (var i = 0; i < tabs.children.length; i++) {
       var b = tabs.children[i];
       b.setAttribute("aria-selected", b.dataset.board === board ? "true" : "false");
     }
-    say("Loading...");
+    say("loading");
     fetchJson("/v1/boards/" + encodeURIComponent(board) + "?top=" + TOP).then(function (data) {
+      if (board !== current) return;
       if (!data.top || !data.top.length) {
-        say("No runs on this board yet. Be the first.");
+        say("empty");
         return;
       }
       rows.textContent = "";
       data.top.forEach(function (r) {
         var tr = document.createElement("tr");
         if (r.rank <= 3) tr.className = "r" + r.rank;
-        cell(tr, r.rank, "rank");
+        cell(tr, num(r.rank), "rank");
         cell(tr, r.name, "name");
-        cell(tr, r.steps.toLocaleString(), "num");
+        cell(tr, num(r.steps), "num");
         cell(tr, clock(r.seconds), "num");
-        cell(tr, r.spells.toLocaleString(), "num hide-narrow");
+        cell(tr, num(r.spells), "num hide-narrow");
+        cell(tr, num(r.quicksteps || 0), "num hide-narrow");
         rows.appendChild(tr);
       });
       statusLine.hidden = true;
       table.hidden = false;
       count.textContent = data.of > data.top.length
-        ? "Showing the top " + data.top.length + " of " + data.of.toLocaleString() + " players."
-        : data.of === 1 ? "1 player." : data.of.toLocaleString() + " players.";
+        ? fill(t("count_top"), { shown: num(data.top.length), total: num(data.of) })
+        : data.of === 1 ? t("count_one") : fill(t("count_many"), { total: num(data.of) });
     }).catch(function () {
-      say("The board could not be reached. Try again in a moment.");
+      if (board === current) say("unreachable_board");
     });
   }
 
   function start() {
     fetchJson("/v1/boards").then(function (data) {
-      var boards = (data.boards || []).map(function (b) { return b.board; });
+      boards = (data.boards || []).map(function (b) { return b.board; });
       if (boards.indexOf("standard") < 0) boards.unshift("standard");
-      tabs.textContent = "";
-      boards.forEach(function (board) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.textContent = label(board);
-        b.dataset.board = board;
-        b.setAttribute("role", "tab");
-        b.addEventListener("click", function () { show(board); });
-        tabs.appendChild(b);
-      });
-      tabs.setAttribute("role", "tablist");
+      renderTabs();
       tabs.hidden = boards.length < 2;
       show(boards[0]);
     }).catch(function () {
-      say("The leaderboard could not be reached. Try again in a moment.");
+      say("unreachable");
     });
   }
 
@@ -118,13 +239,13 @@
     var season = path.indexOf("season") >= 0;
     var top = names.slice(0, season ? 6 : names.length).map(function (name, i) {
       return { rank: i + 1, name: name, steps: 611 + i * 37 + (i * i) % 13,
-        seconds: 2400 + i * 311, spells: 40 - i * 2 };
+        seconds: 2400 + i * 311, spells: 40 - i * 2, quicksteps: 31 - i * 2 };
     });
-    return { board: "x", of: season ? 6 : 214, rank: null, top: top, around: [] };
+    return { board: "x", of: season ? 6 : 1214, rank: null, top: top, around: [] };
   }
 
-  var year = document.getElementById("year");
-  if (year) year.textContent = String(new Date().getFullYear());
-
+  lang = chooseLang();
+  buildPicker();
+  applyLang();
   start();
 })();
