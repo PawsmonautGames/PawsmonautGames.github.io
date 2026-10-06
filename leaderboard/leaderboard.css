@@ -95,10 +95,19 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 td.rank, th.rank { width: 3.5em; text-align: center; font-variant-numeric: tabular-nums; }
 td.rank { font-family: var(--heading); color: var(--muted); }
 td.name { overflow-wrap: anywhere; font-weight: 700; }
-tr.r1 td.rank, tr.r2 td.rank, tr.r3 td.rank { font-weight: 700; }
-tr.r1 td.rank { color: var(--gold-ink); }
-tr.r2 td.rank { color: var(--silver); }
-tr.r3 td.rank { color: var(--bronze); }
+/* The podium: the game's medals and bands (scripts/leaderboard_ui.gd). */
+tr.r1 td, tr.r2 td, tr.r3 td { padding-top: 4px; padding-bottom: 6px; }
+tr.r1 td { background: rgba(232, 184, 74, 0.22); }
+tr.r2 td { background: rgba(201, 208, 214, 0.38); }
+tr.r3 td { background: rgba(208, 138, 78, 0.22); }
+tr.r1 td:first-child { box-shadow: inset 4px 0 0 #9A6A1E; }
+tr.r2 td:first-child { box-shadow: inset 4px 0 0 #6F7B86; }
+tr.r3 td:first-child { box-shadow: inset 4px 0 0 #7E4A22; }
+.medal { display: block; margin: 0 auto; }
+.medal-figure {
+  font: 700 15px "Roboto Slab", Georgia, serif; font-variant-numeric: lining-nums tabular-nums;
+  fill: #2A1F1A;
+}
 .count { margin: 0; padding: 10px 16px; border-top: 1px solid var(--line); color: var(--muted); font: italic 13px var(--serif); }
 .count:empty { display: none; }
 

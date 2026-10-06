@@ -185,6 +185,39 @@
     });
   }
 
+  // The podium medal, the same one the game draws (scripts/leaderboard_ui.gd,
+  // MedalIcon): a rust and blue ribbon, the rim, the metal face, an inner ring,
+  // a highlight, and the number centred on the face.
+  var MEDALS = [["#E8B84A", "#9A6A1E"], ["#C9D0D6", "#6F7B86"], ["#D08A4E", "#7E4A22"]];
+  var SVG = "http://www.w3.org/2000/svg";
+
+  function svg(tag, attrs) {
+    var node = document.createElementNS(SVG, tag);
+    for (var key in attrs) node.setAttribute(key, attrs[key]);
+    return node;
+  }
+
+  function medal(place) {
+    var face = MEDALS[place - 1][0], rim = MEDALS[place - 1][1];
+    var root = svg("svg", { "class": "medal", viewBox: "0 0 32 40", width: "30", height: "38",
+      role: "img", "aria-label": String(place) });
+    root.appendChild(svg("polygon", { points: "4.1,0 11.38,0 19.64,25 12.36,25", fill: "#B23F30" }));
+    root.appendChild(svg("polygon", { points: "20.62,0 27.9,0 19.64,25 12.36,25", fill: "#3F5A6B" }));
+    root.appendChild(svg("circle", { cx: "16", cy: "25", r: "14", fill: rim }));
+    root.appendChild(svg("circle", { cx: "16", cy: "25", r: "12.04", fill: face }));
+    root.appendChild(svg("circle", { cx: "16", cy: "25", r: "10.08", fill: "none",
+      stroke: rim, "stroke-opacity": "0.45", "stroke-width": "1.1" }));
+    root.appendChild(svg("path", { d: "M 4.95 20.98 A 11.76 11.76 0 0 1 18.04 13.42", fill: "none", stroke: "#fff",
+      "stroke-opacity": "0.6", "stroke-width": "1.7", "stroke-linecap": "round" }));
+    // Raised half a unit: Roboto Slab's digits sit that far below the middle of
+    // its line box, which is what "central" centres.
+    var figure = svg("text", { x: "16", y: "24.4", "text-anchor": "middle",
+      "dominant-baseline": "central", "class": "medal-figure" });
+    figure.textContent = num(place);
+    root.appendChild(figure);
+    return root;
+  }
+
   function show(board) {
     current = board;
     for (var i = 0; i < tabs.children.length; i++) {
@@ -204,7 +237,14 @@
       data.top.forEach(function (r) {
         var tr = document.createElement("tr");
         if (r.rank <= 3) tr.className = "r" + r.rank;
-        cell(tr, num(r.rank), "rank");
+        if (r.rank <= 3) {
+          var td = document.createElement("td");
+          td.className = "rank";
+          td.appendChild(medal(r.rank));
+          tr.appendChild(td);
+        } else {
+          cell(tr, num(r.rank), "rank");
+        }
         cell(tr, r.name, "name");
         cell(tr, num(r.steps), "num");
         cell(tr, clock(r.seconds), "num");
