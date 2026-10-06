@@ -18,6 +18,10 @@
   var demo = /[?&]demo\b/.test(location.search);
 
   var tabs = document.getElementById("tabs");
+  // Market (every finished game) or Full (those that also restored the hidden
+  // part of the market). A Full game is on both.
+  var cats = document.getElementById("cats");
+  var category = "market";
   var statusLine = document.getElementById("status");
   var table = document.getElementById("table");
   var rows = document.getElementById("rows");
@@ -188,8 +192,10 @@
       b.setAttribute("aria-selected", b.dataset.board === board ? "true" : "false");
     }
     say("loading");
-    fetchJson("/v1/boards/" + encodeURIComponent(board) + "?top=" + TOP).then(function (data) {
-      if (board !== current) return;
+    var asked = category;
+    fetchJson("/v1/boards/" + encodeURIComponent(board) + "?top=" + TOP
+        + (category === "full" ? "&category=full" : "")).then(function (data) {
+      if (board !== current || asked !== category) return;
       if (!data.top || !data.top.length) {
         say("empty");
         return;
@@ -212,7 +218,18 @@
         ? fill(t("count_top"), { shown: num(data.top.length), total: num(data.of) })
         : data.of === 1 ? t("count_one") : fill(t("count_many"), { total: num(data.of) });
     }).catch(function () {
-      if (board === current) say("unreachable_board");
+      if (board === current && asked === category) say("unreachable_board");
+    });
+  }
+
+  for (var c = 0; c < cats.children.length; c++) {
+    cats.children[c].addEventListener("click", function (event) {
+      category = event.currentTarget.dataset.cat;
+      for (var i = 0; i < cats.children.length; i++) {
+        var b = cats.children[i];
+        b.setAttribute("aria-selected", b.dataset.cat === category ? "true" : "false");
+      }
+      if (current) show(current);
     });
   }
 
