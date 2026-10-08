@@ -227,7 +227,7 @@
     say("loading");
     var asked = category;
     fetchJson("/v1/boards/" + encodeURIComponent(board) + "?top=" + TOP
-        + (category === "full" ? "&category=full" : "")).then(function (data) {
+        + (category === "market" ? "" : "&category=" + category)).then(function (data) {
       if (board !== current || asked !== category) return;
       if (!data.top || !data.top.length) {
         say("empty");
