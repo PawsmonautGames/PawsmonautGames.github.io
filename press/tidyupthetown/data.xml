@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
   <title>Tidy Up the Town</title>
-  <release-date>September 28, 2026</release-date>
+  <release-date>October 16, 2026</release-date>
   <website></website>
 
   <press-copy-request></press-copy-request>
@@ -26,11 +26,20 @@
 
 	  Power up and upgrade your magical abilities to collect and sort hundreds of different items into their correct
 	  market stalls and shelves for the merchants, and bring life back to your town!
+
+	  Rather than 10,000 items where you might be bored two hours in after picking up the fiftieth copy of the same
+	  sword to shelve, I focused on creating a high quality, polished experience with ~1,000 interesting items and a
+	  whole bunch of secrets and life to discover in the world!
+
+	  I want you to have a great time dipping in and out of the game and perhaps trying to top the in-game leaderboards,
+	  rather than slogging through twenty hours of the same content.
+
+	  I've priced the game a little lower than other tidy-ups to try and make this clear.
   </description>
 
   <features>
     <feature>
-		Over 1,000 items across 10 different market stalls including Blacksmith, Apothecary, Scribe, Butcher and more!
+		Over 1,000 items (no AI generation) across 10 different market stalls including Blacksmith, Apothecary, Scribe, Butcher and more!
 	</feature>
     <feature>
 		Full Controller support.
@@ -39,13 +48,16 @@
 		Unlock magical Spells and Abilities to speed up your sorting.
 	</feature>
     <feature>
-		Obtainable animal companions - both cat and dog.
+		Obtainable animal companions - both cat and dog with customizable breeds.
 	</feature>
     <feature>
-		Bring life back to the town - the world populates as you restore the market.
+		Optional Steam and Online Leaderboards to compete with your friends and the wider community!
 	</feature>
     <feature>
 		No time limits, no game over state. Tidy Up at your own pace.
+	</feature>
+    <feature>
+		A big focus on QoL features - full key rebinding, head-bob and motion sickness toggles, FoV settings, and much more.
 	</feature>
   </features>
 
