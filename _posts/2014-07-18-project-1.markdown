@@ -8,6 +8,7 @@ img: Header Capsule.png
 thumbnail: Header Capsule.png
 alt: image-alt
 steam-appid: 2541530
+release-date: March 6, 2026
 presskit: https://www.pawsmonaut.games/press/product/
 project-date: April 2014
 client: Start Bootstrap

@@ -8,6 +8,7 @@ img: Tidy Up the Town Header Capsule.png
 thumbnail: Tidy Up the Town Header Capsule.png
 alt: image-alt
 steam-appid: 5190030
+release-date: October 16, 2026
 presskit: https://www.pawsmonaut.games/press/tidyupthetown/
 leaderboard: /leaderboard/
 description: "Tidy Up the Town is a cozy tidy-up game where your apprentice-level magical mishaps have caused the entire contents of the town's market stalls to end up strewn around the main square...<br> <br>

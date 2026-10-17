@@ -46,6 +46,7 @@ input[type="text"]::placeholder {
                     </a>
                     <div class="portfolio-caption">
                         <h4>{{ post.title }}</h4>
+                        {% if post.release-date %}<p class="portfolio-date">Released {{ post.release-date }}</p>{% endif %}
                         <!--<p class="text-muted">{{ post.subtitle }}</p>-->
                     </div>
                     <iframe class="portfolio-steam" src="https://store.steampowered.com/widget/{{ post.steam-appid }}/?utm_source=pawsmonautwebsite" frameborder="0" height="190"></iframe>

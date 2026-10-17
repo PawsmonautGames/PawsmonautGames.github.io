@@ -425,6 +425,12 @@ section h3.section-subheading {
     margin: 0 5px 10px;
 }
 
+#portfolio .portfolio-item .portfolio-caption .portfolio-date {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #aaa;
+}
+
 #portfolio .portfolio-item .portfolio-steam {
     display: block;
     margin: 15px auto 0;
