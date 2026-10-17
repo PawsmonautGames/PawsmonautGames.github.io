@@ -425,6 +425,64 @@ section h3.section-subheading {
     margin: 0 5px 10px;
 }
 
+#portfolio .portfolio-item .portfolio-steam {
+    display: block;
+    margin: 15px auto 0;
+    width: 100%;
+    max-width: 646px;
+}
+
+#portfolio .games-banner {
+    margin: 30px 0;
+    text-align: center;
+    letter-spacing: 0.3em;
+    color: #{{ site.data.template.color.tertiary }};
+}
+
+#portfolio .portfolio-item.portfolio-item-centered {
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#portfolio .portfolio-item .portfolio-mystery {
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+    padding-bottom: 46.7%; /* the 920x430 header capsule ratio */
+    background: radial-gradient(circle at 50% 45%, #2a3550 0%, #0b0e1a 70%);
+    overflow: hidden;
+}
+
+#portfolio .portfolio-item .portfolio-mystery:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image:
+        radial-gradient(1px 1px at 12% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 28% 72%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 44% 15%, #fff, transparent),
+        radial-gradient(1px 1px at 63% 82%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 78% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 65%, #fff, transparent),
+        radial-gradient(1px 1px at 8% 88%, #fff, transparent),
+        radial-gradient(1px 1px at 55% 40%, #fff, transparent);
+    opacity: 0.8;
+}
+
+#portfolio .portfolio-item .portfolio-mystery i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 72px;
+    color: #{{ site.data.template.color.secondary }};
+    text-shadow: 0 0 24px rgba({{ site.data.template.color.secondary | hex_to_rgb | join: ',' }}, .6);
+    transform: translate(-50%, -50%);
+}
+
 #portfolio * {
     z-index: 2;
 }
