@@ -47,6 +47,7 @@ input[type="text"]::placeholder {
                     <div class="portfolio-caption">
                         <h4>{{ post.title }}</h4>
                         {% if post.release-date %}<p class="portfolio-date">Released {{ post.release-date }}</p>{% endif %}
+                        {% if post.review-score %}<p class="portfolio-reviews"><strong>{{ post.review-score }}</strong> &middot; {{ post.review-summary }}</p>{% endif %}
                         <!--<p class="text-muted">{{ post.subtitle }}</p>-->
                     </div>
                     <iframe class="portfolio-steam" src="https://store.steampowered.com/widget/{{ post.steam-appid }}/?utm_source=pawsmonautwebsite" frameborder="0" height="190"></iframe>
@@ -64,8 +65,16 @@ input[type="text"]::placeholder {
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 portfolio-item portfolio-item-centered">
-                    <div class="portfolio-mystery">
+                <div class="col-sm-6 portfolio-item">
+                    <div class="portfolio-mystery portfolio-mystery-deep">
+                        <i class="fa fa-question"></i>
+                    </div>
+                    <div class="portfolio-caption">
+                        <h4>PROJECT FATHOM</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 portfolio-item">
+                    <div class="portfolio-mystery portfolio-mystery-stars">
                         <i class="fa fa-question"></i>
                     </div>
                     <div class="portfolio-caption">
