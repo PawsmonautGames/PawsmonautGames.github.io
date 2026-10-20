@@ -446,9 +446,11 @@ section h3.section-subheading {
 }
 
 #portfolio .portfolio-item .portfolio-caption .portfolio-reviews {
-    margin-top: 4px;
-    font-size: 14px;
-    color: #66c0f4; /* Steam's review blue */
+    margin-top: 6px;
+    font-family: {{ site.data.template.font.primary }};
+    font-size: 15px;
+    font-style: normal;
+    color: #8fd3ff; /* a lighter take on Steam's review blue */
 }
 
 #portfolio .portfolio-item .portfolio-mystery {
