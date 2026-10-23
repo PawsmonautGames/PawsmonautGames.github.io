@@ -10,7 +10,7 @@ alt: image-alt
 steam-appid: 5190030
 release-date: October 16, 2026
 review-score: Very Positive
-review-summary: 100% of 69 Steam reviews
+review-summary: 100% of 74 Steam reviews
 presskit: https://www.pawsmonaut.games/press/tidyupthetown/
 leaderboard: /leaderboard/
 description: "Tidy Up the Town is a cozy tidy-up game where your apprentice-level magical mishaps have caused the entire contents of the town's market stalls to end up strewn around the main square...<br> <br>
