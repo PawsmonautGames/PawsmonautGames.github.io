@@ -1,5 +1,6 @@
 // The Fewest Steps board, read from the leaderboard API, in the player's
-// language. Every name and number is set with textContent: a display name is
+// language. A board the API says is ranked by time (Winter Solstice) gets its
+// own heading and puts Time before Steps. Every name and number is set with textContent: a display name is
 // data, never markup.
 //
 // The language is, in order: ?lang= in the address, the one picked last time
@@ -30,6 +31,8 @@
 
   var lang = "en";
   var boards = [];
+  // Board id -> "time" or "steps", as the API says it ranks; steps if unsaid.
+  var rankedBy = {};
   var current = null;
   var lastStatus = "loading_boards";
 
@@ -107,6 +110,7 @@
       marked[i].textContent = t(marked[i].getAttribute("data-i18n"));
     }
     buildHow2(document.getElementById("how-2"));
+    headline();
     document.getElementById("copyright").textContent =
       fill(t("copyright"), { year: new Date().getFullYear() });
     renderTabs();
@@ -130,6 +134,22 @@
   }
 
   // --- the boards ----------------------------------------------------------
+
+  function byTime(board) {
+    return rankedBy[board] === "time";
+  }
+
+  // The heading, intro and tab title for the board on show, and Time moved in
+  // front of Steps on a board ranked by time.
+  function headline() {
+    var time = current !== null && byTime(current);
+    document.getElementById("title").textContent = t(time ? "title_time" : "title");
+    document.getElementById("lede").textContent = t(time ? "lede_time" : "lede");
+    document.title = t(time ? "doc_title_time" : "doc_title");
+    var steps = document.getElementById("th-steps"), clockHead = document.getElementById("th-time");
+    if (time) steps.parentNode.insertBefore(clockHead, steps);
+    else steps.parentNode.insertBefore(steps, clockHead);
+  }
 
   function label(board) {
     if (board === "standard") return t("standard");
@@ -220,6 +240,7 @@
 
   function show(board) {
     current = board;
+    headline();
     for (var i = 0; i < tabs.children.length; i++) {
       var b = tabs.children[i];
       b.setAttribute("aria-selected", b.dataset.board === board ? "true" : "false");
@@ -229,6 +250,10 @@
     fetchJson("/v1/boards/" + encodeURIComponent(board) + "?top=" + TOP
         + (category === "market" ? "" : "&category=" + category)).then(function (data) {
       if (board !== current || asked !== category) return;
+      if (data.ranked_by && data.ranked_by !== rankedBy[board]) {
+        rankedBy[board] = data.ranked_by;
+        headline();
+      }
       if (!data.top || !data.top.length) {
         say("empty");
         return;
@@ -246,8 +271,13 @@
           cell(tr, num(r.rank), "rank");
         }
         cell(tr, r.name, "name");
-        cell(tr, num(r.steps), "num");
-        cell(tr, clock(r.seconds), "num");
+        if (byTime(board)) {
+          cell(tr, clock(r.seconds), "num");
+          cell(tr, num(r.steps), "num");
+        } else {
+          cell(tr, num(r.steps), "num");
+          cell(tr, clock(r.seconds), "num");
+        }
         cell(tr, num(r.spells), "num hide-narrow");
         cell(tr, num(r.quicksteps || 0), "num hide-narrow");
         rows.appendChild(tr);
@@ -276,6 +306,9 @@
   function start() {
     fetchJson("/v1/boards").then(function (data) {
       boards = (data.boards || []).map(function (b) { return b.board; });
+      (data.boards || []).forEach(function (b) { if (b.ranked_by) rankedBy[b.board] = b.ranked_by; });
+      // The paragraph on racing the clock, once there is a board that does.
+      document.getElementById("how-time").hidden = !boards.some(byTime);
       if (boards.indexOf("standard") < 0) boards.unshift("standard");
       renderTabs();
       tabs.hidden = boards.length < 2;
@@ -289,16 +322,19 @@
 
   function fake(path) {
     if (path === "/v1/boards") {
-      return { boards: [{ board: "standard", players: 214 }, { board: "season:samhainn", players: 37 }] };
+      return { boards: [{ board: "standard", players: 214, ranked_by: "steps" },
+        { board: "season:samhainn", players: 37, ranked_by: "steps" },
+        { board: "season:winter", players: 12, ranked_by: "time" }] };
     }
     var names = ["Wren", "Pip the Tidy", "Marlo-7", "Дмитрий", "たろう", "Zoë", "O'Brien",
       "Apprentice 4821", "김민수", "Hazel", "Corin", "Mairen", "Bramble", "Tansy", "Rook"];
     var season = path.indexOf("season") >= 0;
+    var time = path.indexOf("winter") >= 0;
     var top = names.slice(0, season ? 6 : names.length).map(function (name, i) {
-      return { rank: i + 1, name: name, steps: 611 + i * 37 + (i * i) % 13,
-        seconds: 2400 + i * 311, spells: 40 - i * 2, quicksteps: 31 - i * 2 };
+      return { rank: i + 1, name: name, steps: time ? 2400 - i * 90 : 611 + i * 37 + (i * i) % 13,
+        seconds: time ? 1800 + i * 47 : 2400 + i * 311, spells: 40 - i * 2, quicksteps: 31 - i * 2 };
     });
-    return { board: "x", of: season ? 6 : 1214, rank: null, top: top, around: [] };
+    return { board: "x", ranked_by: time ? "time" : "steps", of: season ? 6 : 1214, rank: null, top: top, around: [] };
   }
 
   lang = chooseLang();
