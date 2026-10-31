@@ -303,16 +303,67 @@
     });
   }
 
+  // --- seasons opening ------------------------------------------------------
+
+  // A season's board gets its tab at the moment the season opens, before
+  // anyone has a run on it (the API lists only boards that hold runs), with how
+  // it ranks in case the API has not said. Winter Solstice opens at 4 PM UK
+  // time on 29 November 2026: GMT then, so 16:00 UTC. A page left open across
+  // the moment gains the tab without a reload.
+  var OPENINGS = [
+    { board: "season:winter", at: Date.UTC(2026, 10, 29, 16, 0, 0), ranked_by: "time" },
+  ];
+
+  // ?demo&now=2026-11-29T15:59:50Z pretends the clock reads that, and runs on
+  // from it, for checking an opening without waiting for it.
+  var skew = 0;
+  var pretend = demo && (location.search.match(/[?&]now=([0-9T:.\-]+Z)/) || [])[1];
+  if (pretend && !isNaN(Date.parse(pretend))) skew = Date.parse(pretend) - Date.now();
+
+  function now() {
+    return Date.now() + skew;
+  }
+
+  // Adds the tab of every season whose moment has come; true if any was new.
+  function addOpened() {
+    var added = false;
+    OPENINGS.forEach(function (o) {
+      if (now() < o.at || boards.indexOf(o.board) >= 0) return;
+      boards.push(o.board);
+      if (!rankedBy[o.board]) rankedBy[o.board] = o.ranked_by;
+      added = true;
+    });
+    return added;
+  }
+
+  function refreshTabs() {
+    // The paragraph on racing the clock, once there is a board that does.
+    document.getElementById("how-time").hidden = !boards.some(byTime);
+    renderTabs();
+    tabs.hidden = boards.length < 2;
+  }
+
+  // One timer per season still to open. setTimeout cannot wait past about 24
+  // days; a page open that long picks the tab up on its next load instead.
+  function awaitOpenings() {
+    OPENINGS.forEach(function (o) {
+      var wait = o.at - now();
+      if (wait <= 0 || wait > 2147483647) return;
+      setTimeout(function () {
+        if (addOpened()) refreshTabs();
+      }, wait + 250);
+    });
+  }
+
   function start() {
     fetchJson("/v1/boards").then(function (data) {
       boards = (data.boards || []).map(function (b) { return b.board; });
       (data.boards || []).forEach(function (b) { if (b.ranked_by) rankedBy[b.board] = b.ranked_by; });
-      // The paragraph on racing the clock, once there is a board that does.
-      document.getElementById("how-time").hidden = !boards.some(byTime);
       if (boards.indexOf("standard") < 0) boards.unshift("standard");
-      renderTabs();
-      tabs.hidden = boards.length < 2;
+      addOpened();
+      refreshTabs();
       show(boards[0]);
+      awaitOpenings();
     }).catch(function () {
       say("unreachable");
     });
@@ -322,9 +373,9 @@
 
   function fake(path) {
     if (path === "/v1/boards") {
+      // No Winter here: it comes in by its opening (OPENINGS), as it will live.
       return { boards: [{ board: "standard", players: 214, ranked_by: "steps" },
-        { board: "season:samhainn", players: 37, ranked_by: "steps" },
-        { board: "season:winter", players: 12, ranked_by: "time" }] };
+        { board: "season:samhainn", players: 37, ranked_by: "steps" }] };
     }
     var names = ["Wren", "Pip the Tidy", "Marlo-7", "Дмитрий", "たろう", "Zoë", "O'Brien",
       "Apprentice 4821", "김민수", "Hazel", "Corin", "Mairen", "Bramble", "Tansy", "Rook"];
