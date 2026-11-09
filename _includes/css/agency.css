@@ -431,52 +431,84 @@ section h3.section-subheading {
     color: #aaa;
 }
 
-#portfolio .portfolio-item .portfolio-caption .portfolio-coming {
-    color: #{{ site.data.template.color.secondary }};
+/* Released games: each card's image, caption, Steam widget, buttons and extras
+   share grid rows with the card beside it, so the cards always line up evenly
+   however long a caption gets. */
+#portfolio .portfolio-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-/* News */
-#news .news-list {
-    margin: 0 auto;
-    padding: 0;
-    max-width: 800px;
-    list-style: none;
+#portfolio .portfolio-row:before,
+#portfolio .portfolio-row:after {
+    display: none; /* Bootstrap's clearfix pseudo-elements would become grid items */
 }
 
-#news .news-item {
-    margin-bottom: 30px;
-    padding: 25px;
+@media (min-width: 768px) {
+    #portfolio .portfolio-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+#portfolio .portfolio-row > .portfolio-item {
+    display: grid;
+    grid-row: span 5; /* image, caption, Steam widget, buttons, console box */
+    grid-template-rows: subgrid;
+    align-content: start;
+    float: none;
+    width: auto;
+}
+
+#portfolio .portfolio-row > .portfolio-item > .portfolio-link,
+#portfolio .portfolio-row > .portfolio-item > .portfolio-caption {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#portfolio .portfolio-row > .portfolio-item > .portfolio-console {
+    align-self: start;
+}
+
+/* Console announcement under a game's buttons */
+#portfolio .portfolio-item .portfolio-console {
+    margin: 5px auto 0;
+    padding: 18px 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
     background-color: #fff;
-    border-left: 4px solid #{{ site.data.template.color.secondary }};
+    border-top: 4px solid #{{ site.data.template.color.secondary }};
 }
 
-#news .news-date {
-    margin: 0 0 5px;
-    font-size: 14px;
-    color: #{{ site.data.template.color.muted }};
-}
-
-#news .news-item h4 {
-    margin: 0 0 10px;
+#portfolio .portfolio-item .portfolio-console h4 {
+    margin: 0 0 6px;
     text-transform: none;
+    color: #{{ site.data.template.color.tertiary }};
 }
 
-#news .news-item p {
-    margin: 0 0 10px;
+#portfolio .portfolio-item .portfolio-console p {
+    margin: 0 0 8px;
+    font-size: 14px;
 }
 
-#news .news-item a {
+#portfolio .portfolio-item .portfolio-console .portfolio-console-platforms {
+    font-weight: 700;
+}
+
+#portfolio .portfolio-item .portfolio-console .portfolio-console-links {
+    margin-bottom: 0;
+}
+
+#portfolio .portfolio-item .portfolio-console a {
     color: #{{ site.data.template.color.tertiary }};
     font-weight: 700;
     text-decoration: underline;
     text-decoration-color: #{{ site.data.template.color.secondary }};
     text-decoration-thickness: 2px;
-}
-
-#news .news-item a:hover,
-#news .news-item a:focus {
-    color: #{{ site.data.template.color.secondary-dark }};
-    text-decoration-color: #{{ site.data.template.color.tertiary }};
 }
 
 #portfolio .portfolio-item .portfolio-steam {

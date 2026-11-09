@@ -33,7 +33,7 @@ input[type="text"]::placeholder {
                     <h3 class="games-banner">Released</h3>
                 </div>
             </div>
-            <div class="row">
+            <div class="row portfolio-row">
             {% for post in games %}
                 <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
@@ -47,7 +47,6 @@ input[type="text"]::placeholder {
                     <div class="portfolio-caption">
                         <h4>{{ post.title }}</h4>
                         {% if post.release-date %}<p class="portfolio-date">Released {{ post.release-date }}</p>{% endif %}
-                        {% if post.coming-soon %}<p class="portfolio-date portfolio-coming">{{ post.coming-soon }}</p>{% endif %}
                         {% if post.review-score %}<p class="portfolio-reviews"><strong>{{ post.review-score }}</strong> &middot; {{ post.review-summary }}</p>{% endif %}
                         <!--<p class="text-muted">{{ post.subtitle }}</p>-->
                     </div>
@@ -56,6 +55,14 @@ input[type="text"]::placeholder {
                         <a class="btn btn-default" href="{{ post.presskit }}">PRESS KIT</a>
                         {% if post.leaderboard %}<a class="btn btn-default" href="{{ post.leaderboard }}">LEADERBOARD</a>{% endif %}
                     </div>
+                    {% if post.console %}
+                    <div class="portfolio-console">
+                        <h4>{{ post.console.heading }}</h4>
+                        <p class="portfolio-console-platforms">{{ post.console.platforms }}</p>
+                        {% if post.console.details %}<p>{{ post.console.details }}</p>{% endif %}
+                        {% if post.console.links %}<p class="portfolio-console-links">Wishlist on {% for link in post.console.links %}<a href="{{ link.url }}">{{ link.label }}</a>{% unless forloop.last %} or {% endunless %}{% endfor %}</p>{% endif %}
+                    </div>
+                    {% endif %}
                 </div>
             {% endfor %}
             </div>
