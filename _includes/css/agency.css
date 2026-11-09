@@ -465,6 +465,20 @@ section h3.section-subheading {
     margin: 0 0 10px;
 }
 
+#news .news-item a {
+    color: #{{ site.data.template.color.tertiary }};
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #{{ site.data.template.color.secondary }};
+    text-decoration-thickness: 2px;
+}
+
+#news .news-item a:hover,
+#news .news-item a:focus {
+    color: #{{ site.data.template.color.secondary-dark }};
+    text-decoration-color: #{{ site.data.template.color.tertiary }};
+}
+
 #portfolio .portfolio-item .portfolio-steam {
     display: block;
     margin: 15px auto 0;
