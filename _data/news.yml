@@ -1,0 +1,37 @@
+# Studio news shown on the home page, newest first.
+- date: 2026-10-20
+  title: AETHUS is coming to PS5, Xbox Series X|S, Nintendo Switch 2 and Microsoft Store in early 2027
+  body: >-
+    We've partnered with Making Port to bring AETHUS to consoles. Making Port is developing the console
+    versions and publishing them on every platform, with reworked gamepad controls, Joy-Con 2 mouse
+    controls on Switch 2, a version tailored for Xbox Ally, visual improvements, and French, German and
+    Spanish localisation. A release date will be announced soon.
+  links:
+    - label: Press release
+      url: https://www.gamespress.com/Sci-fi-mining-survival-game-AETHUS-is-digging-its-way-to-PS5-Xbox-Seri
+    - label: PlayStation Store
+      url: https://store.playstation.com/en-us/concept/10020752
+    - label: Xbox &amp; Microsoft Store
+      url: https://www.xbox.com/en-US/games/store/aethus/9mxxz5jm6n7q
+    - label: Press kit
+      url: /press/product/
+
+- date: 2026-10-16
+  title: Tidy Up the Town is out now on Steam
+  body: >-
+    Our cozy tidy-up game launched on Steam on 16 October 2026.
+  links:
+    - label: Steam
+      url: https://store.steampowered.com/app/5190030/
+    - label: Press kit
+      url: /press/tidyupthetown/
+
+- date: 2026-03-06
+  title: AETHUS launches on Steam
+  body: >-
+    Our debut title, the story-driven survival-crafter AETHUS, launched on Steam on 6 March 2026.
+  links:
+    - label: Steam
+      url: https://store.steampowered.com/app/2541530/AETHUS/
+    - label: Press kit
+      url: /press/product/

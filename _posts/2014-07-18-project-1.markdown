@@ -9,6 +9,7 @@ thumbnail: Header Capsule.png
 alt: image-alt
 steam-appid: 2541530
 release-date: March 6, 2026
+coming-soon: Coming to PS5, Xbox Series X|S, Switch 2 &amp; Microsoft Store in early 2027
 review-score: Very Positive
 review-summary: 94% of 1,861 Steam reviews
 presskit: https://www.pawsmonaut.games/press/product/
@@ -17,6 +18,8 @@ client: Start Bootstrap
 category: Web Development
 description: "AETHUS is a story-driven survival game with a unique low-poly isometric style and deep, systemic gameplay. <br> <br>
 	  Explore a futuristic sci-fi underground world to mine and prospect for the valuable resources you need to build up your cosy mining outpost.<br> <br>
+	  <strong>Coming to consoles in early 2027:</strong> AETHUS is heading to PlayStation 5, Xbox Series X|S, Nintendo Switch 2 and Microsoft Store on Windows, with console versions developed and published by Making Port. They bring reworked gamepad controls, Joy-Con 2 mouse controls on Switch 2, visual improvements, and French, German and Spanish localisation.<br> <br>
+	  Wishlist on <a href='https://store.playstation.com/en-us/concept/10020752'>PlayStation Store</a> or <a href='https://www.xbox.com/en-US/games/store/aethus/9mxxz5jm6n7q'>Xbox &amp; Microsoft Store</a>.<br> <br>
 	  Explore the world and features of the game on the Steam page, via the widget below!"
 
 ---

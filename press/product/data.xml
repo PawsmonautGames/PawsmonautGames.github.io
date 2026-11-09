@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
   <title>AETHUS</title>
-  <release-date>March 2026</release-date>
+  <release-date>March 6, 2026 (PC); early 2027 (PS5, Xbox Series X|S, Nintendo Switch 2, Microsoft Store)</release-date>
   <website>https://store.steampowered.com/app/2541530/AETHUS/?utm_source=presskit</website>
 
   <!-- Link to request press copy: -->
@@ -10,7 +10,23 @@
   <platforms>
     <platform>
       <name>PC (Steam)</name>
+      <link>https://store.steampowered.com/app/2541530/AETHUS/</link>
+    </platform>
+    <platform>
+      <name>PlayStation 5 (early 2027, Making Port)</name>
+      <link>https://store.playstation.com/en-us/concept/10020752</link>
+    </platform>
+    <platform>
+      <name>Xbox Series X|S (early 2027, Making Port)</name>
+      <link>https://www.xbox.com/en-US/games/store/aethus/9mxxz5jm6n7q</link>
+    </platform>
+    <platform>
+      <name>Nintendo Switch 2 (early 2027, Making Port)</name>
       <link></link>
+    </platform>
+    <platform>
+      <name>Microsoft Store on Windows (early 2027, Making Port)</name>
+      <link>https://www.xbox.com/en-US/games/store/aethus/9mxxz5jm6n7q</link>
     </platform>
   </platforms>
 

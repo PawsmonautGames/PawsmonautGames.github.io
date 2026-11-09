@@ -431,6 +431,40 @@ section h3.section-subheading {
     color: #aaa;
 }
 
+#portfolio .portfolio-item .portfolio-caption .portfolio-coming {
+    color: #{{ site.data.template.color.secondary }};
+}
+
+/* News */
+#news .news-list {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 800px;
+    list-style: none;
+}
+
+#news .news-item {
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: #fff;
+    border-left: 4px solid #{{ site.data.template.color.secondary }};
+}
+
+#news .news-date {
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #{{ site.data.template.color.muted }};
+}
+
+#news .news-item h4 {
+    margin: 0 0 10px;
+    text-transform: none;
+}
+
+#news .news-item p {
+    margin: 0 0 10px;
+}
+
 #portfolio .portfolio-item .portfolio-steam {
     display: block;
     margin: 15px auto 0;

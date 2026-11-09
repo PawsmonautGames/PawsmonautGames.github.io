@@ -47,6 +47,7 @@ input[type="text"]::placeholder {
                     <div class="portfolio-caption">
                         <h4>{{ post.title }}</h4>
                         {% if post.release-date %}<p class="portfolio-date">Released {{ post.release-date }}</p>{% endif %}
+                        {% if post.coming-soon %}<p class="portfolio-date portfolio-coming">{{ post.coming-soon }}</p>{% endif %}
                         {% if post.review-score %}<p class="portfolio-reviews"><strong>{{ post.review-score }}</strong> &middot; {{ post.review-summary }}</p>{% endif %}
                         <!--<p class="text-muted">{{ post.subtitle }}</p>-->
                     </div>
