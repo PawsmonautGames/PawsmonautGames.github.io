@@ -1,6 +1,8 @@
 // The Fewest Steps board, read from the leaderboard API, in the player's
 // language. A board the API says is ranked by time (Winter Solstice) gets its
-// own heading and puts Time before Steps. Every name and number is set with textContent: a display name is
+// own heading and puts Time before Steps. A co-op board (coop:standard,
+// coop:<season>) races the clock too, sits beside its solo board, and shows
+// each row as "Name & Partner". Every name and number is set with textContent: a display name is
 // data, never markup.
 //
 // The language is, in order: ?lang= in the address, the one picked last time
@@ -135,23 +137,35 @@
 
   // --- the boards ----------------------------------------------------------
 
+  function isCoop(board) {
+    return board.indexOf("coop:") === 0;
+  }
+
+  // Co-op boards always race the clock, so they are time boards even before
+  // the API has said.
   function byTime(board) {
-    return rankedBy[board] === "time";
+    return rankedBy[board] ? rankedBy[board] === "time" : isCoop(board);
   }
 
   // The heading, intro and tab title for the board on show, and Time moved in
   // front of Steps on a board ranked by time.
   function headline() {
     var time = current !== null && byTime(current);
+    var coop = current !== null && isCoop(current);
     document.getElementById("title").textContent = t(time ? "title_time" : "title");
-    document.getElementById("lede").textContent = t(time ? "lede_time" : "lede");
+    document.getElementById("lede").textContent = t(coop ? "lede_coop" : time ? "lede_time" : "lede");
     document.title = t(time ? "doc_title_time" : "doc_title");
     var steps = document.getElementById("th-steps"), clockHead = document.getElementById("th-time");
     if (time) steps.parentNode.insertBefore(clockHead, steps);
     else steps.parentNode.insertBefore(steps, clockHead);
   }
 
+  // "Co-op", or "Co-op - Winter Solstice" for a season's, as the game names it.
   function label(board) {
+    if (isCoop(board)) {
+      var rest = board.slice(5);
+      return rest === "standard" ? t("coop") : t("coop") + " - " + label("season:" + rest);
+    }
     if (board === "standard") return t("standard");
     var id = board.replace(/^season:/, "");
     var known = t(id);
@@ -186,6 +200,9 @@
   function fetchJson(path) {
     if (demo) return Promise.resolve(fake(path));
     return fetch(API + path, { credentials: "omit" }).then(function (res) {
+      // A board the API does not know yet (a co-op board before the API
+      // takes them) reads as one with no runs.
+      if (res.status === 404 && path.indexOf("/v1/boards/") === 0) return { top: [], of: 0 };
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     });
@@ -270,7 +287,7 @@
         } else {
           cell(tr, num(r.rank), "rank");
         }
-        cell(tr, r.name, "name");
+        cell(tr, r.partner ? r.name + " & " + r.partner : r.name, "name");
         if (byTime(board)) {
           cell(tr, clock(r.seconds), "num");
           cell(tr, num(r.steps), "num");
@@ -308,10 +325,14 @@
   // A season's board gets its tab at the moment the season opens, before
   // anyone has a run on it (the API lists only boards that hold runs), with how
   // it ranks in case the API has not said. Winter Solstice opens at 4 PM UK
-  // time on 29 November 2026: GMT then, so 16:00 UTC. A page left open across
-  // the moment gains the tab without a reload.
+  // time on 29 November 2026: GMT then, so 16:00 UTC. Co-op comes with it,
+  // so the co-op boards open then too. A page left open across the moment
+  // gains the tabs without a reload.
+  var WINTER = Date.UTC(2026, 10, 29, 16, 0, 0);
   var OPENINGS = [
-    { board: "season:winter", at: Date.UTC(2026, 10, 29, 16, 0, 0), ranked_by: "time" },
+    { board: "season:winter", at: WINTER, ranked_by: "time" },
+    { board: "coop:standard", at: WINTER, ranked_by: "time" },
+    { board: "coop:winter", at: WINTER, ranked_by: "time" },
   ];
 
   // ?demo&now=2026-11-29T15:59:50Z pretends the clock reads that, and runs on
@@ -336,9 +357,30 @@
     return added;
   }
 
+  // Each solo board with its co-op board straight after it (standard, Co-op,
+  // Samhainn, Co-op - Samhainn, ...), and any co-op board whose solo board is
+  // not listed at the end.
+  function pairUp(list) {
+    var out = [];
+    list.forEach(function (board) {
+      if (isCoop(board)) return;
+      out.push(board);
+      var coop = "coop:" + board.replace(/^season:/, "");
+      if (list.indexOf(coop) >= 0) out.push(coop);
+    });
+    list.forEach(function (board) {
+      if (out.indexOf(board) < 0) out.push(board);
+    });
+    return out;
+  }
+
   function refreshTabs() {
-    // The paragraph on racing the clock, once there is a board that does.
-    document.getElementById("how-time").hidden = !boards.some(byTime);
+    boards = pairUp(boards);
+    // The paragraph on racing the clock, once there is a solo board that does,
+    // and the one on co-op, once there is a co-op board.
+    document.getElementById("how-time").hidden =
+      !boards.some(function (b) { return !isCoop(b) && byTime(b); });
+    document.getElementById("how-coop").hidden = !boards.some(isCoop);
     renderTabs();
     tabs.hidden = boards.length < 2;
   }
@@ -379,11 +421,15 @@
     }
     var names = ["Wren", "Pip the Tidy", "Marlo-7", "Дмитрий", "たろう", "Zoë", "O'Brien",
       "Apprentice 4821", "김민수", "Hazel", "Corin", "Mairen", "Bramble", "Tansy", "Rook"];
-    var season = path.indexOf("season") >= 0;
-    var time = path.indexOf("winter") >= 0;
+    var coop = path.indexOf("coop") >= 0;
+    var season = path.indexOf("season") >= 0 || coop;
+    var time = path.indexOf("winter") >= 0 || coop;
     var top = names.slice(0, season ? 6 : names.length).map(function (name, i) {
-      return { rank: i + 1, name: name, steps: time ? 2400 - i * 90 : 611 + i * 37 + (i * i) % 13,
+      var row = { rank: i + 1, name: name, steps: time ? 2400 - i * 90 : 611 + i * 37 + (i * i) % 13,
         seconds: time ? 1800 + i * 47 : 2400 + i * 311, spells: 40 - i * 2, quicksteps: 31 - i * 2 };
+      // A co-op row whose partner did not join the boards has no partner.
+      if (coop && i !== 2) row.partner = names[names.length - 1 - i];
+      return row;
     });
     return { board: "x", ranked_by: time ? "time" : "steps", of: season ? 6 : 1214, rank: null, top: top, around: [] };
   }
