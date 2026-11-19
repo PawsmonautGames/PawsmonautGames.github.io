@@ -1,6 +1,7 @@
-// The Fewest Steps board, read from the leaderboard API, in the player's
-// language. A board the API says is ranked by time (Winter Solstice) gets its
-// own heading and puts Time before Steps. A co-op board (coop:standard,
+// The leaderboards, read from the leaderboard API, in the player's language.
+// A board ranks by fewest steps unless the API says it is ranked by time
+// (Winter Solstice), which gets its own heading and puts Time before Steps;
+// the line under the tabs says which. A co-op board (coop:standard,
 // coop:<season>) races the clock too, sits beside its solo board, and shows
 // each row as "Name & Partner". Every name and number is set with textContent: a display name is
 // data, never markup.
@@ -155,6 +156,10 @@
     document.getElementById("title").textContent = t(time ? "title_time" : "title");
     document.getElementById("lede").textContent = t(coop ? "lede_coop" : time ? "lede_time" : "lede");
     document.title = t(time ? "doc_title_time" : "doc_title");
+    // How this board ranks, in the game's own words (LB_RULE_STEPS/_TIME);
+    // blank until there is a board on show.
+    document.getElementById("rule").textContent =
+      current === null ? "" : t(time ? "rule_time" : "rule_steps");
     var steps = document.getElementById("th-steps"), clockHead = document.getElementById("th-time");
     if (time) steps.parentNode.insertBefore(clockHead, steps);
     else steps.parentNode.insertBefore(steps, clockHead);
@@ -376,10 +381,7 @@
 
   function refreshTabs() {
     boards = pairUp(boards);
-    // The paragraph on racing the clock, once there is a solo board that does,
-    // and the one on co-op, once there is a co-op board.
-    document.getElementById("how-time").hidden =
-      !boards.some(function (b) { return !isCoop(b) && byTime(b); });
+    // The paragraph on co-op, once there is a co-op board.
     document.getElementById("how-coop").hidden = !boards.some(isCoop);
     renderTabs();
     tabs.hidden = boards.length < 2;

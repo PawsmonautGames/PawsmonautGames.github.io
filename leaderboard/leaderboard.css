@@ -111,6 +111,10 @@ tr.r3 td:first-child { box-shadow: inset 4px 0 0 #7E4A22; }
 .count { margin: 0; padding: 10px 16px; border-top: 1px solid var(--line); color: var(--muted); font: italic 13px var(--serif); }
 .count:empty { display: none; }
 
+/* How the board on show ranks, under the tabs. */
+.rule { margin: 0 0 14px; text-align: center; color: var(--muted); font: italic 15px var(--serif); }
+.rule:empty { display: none; }
+
 .about { text-align: center; }
 .about p { max-width: 640px; margin: 0 auto 12px; }
 
@@ -143,4 +147,5 @@ tr.r3 td:first-child { box-shadow: inset 4px 0 0 #7E4A22; }
 /* Chinese, Japanese and Korean have no italic: a slanted CJK font is a fake. */
 :lang(ja) .subheading, :lang(ko) .subheading, :lang(zh) .subheading,
 :lang(ja) .status, :lang(ko) .status, :lang(zh) .status,
-:lang(ja) .count, :lang(ko) .count, :lang(zh) .count { font-style: normal; }
+:lang(ja) .count, :lang(ko) .count, :lang(zh) .count,
+:lang(ja) .rule, :lang(ko) .rule, :lang(zh) .rule { font-style: normal; }
