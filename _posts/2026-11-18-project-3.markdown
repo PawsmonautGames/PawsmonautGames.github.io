@@ -1,0 +1,20 @@
+---
+title: "FATHOM"
+subtitle: Desktop Companion Idler
+layout: default
+modal-id: 3
+date: 2026-11-18
+img: FATHOM Header Capsule.png
+thumbnail: FATHOM Header Capsule.png
+alt: FATHOM key art
+steam-appid: 4961680
+in-development: true
+coming-soon: Coming to Steam in 2027
+blurb: A pixel-art desktop companion idler set on an alien ocean planet in the AETHUS universe.
+presskit: /press/fathom/
+description: "FATHOM is a pixel-art desktop idler set on a vast alien ocean planet in the AETHUS universe. Sitting at the bottom of your screen while you work or play, it puts you in charge of a floating research platform and its crew, charged with exploring the watery depths below.<br> <br>
+	  Send out expeditions, study and retrieve bizarre marine life, gather alien resources and build up your research base. Deploy your crews to explore varied underwater biomes, from pristine waters teeming with colourful fish to pitch-black abyssal trenches hiding extraordinary creatures.<br> <br>
+	  Continue the Resource Worlds Saga begun in AETHUS with a new perspective, as you discover the marine life, environments and corporate mysteries of this brand new ocean planet.<br> <br>
+	  <strong>Coming to Steam in 2027</strong>, co-published by Pawsmonaut Games and Exothermic. Wishlist now via the widget below!"
+
+---

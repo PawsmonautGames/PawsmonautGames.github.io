@@ -34,7 +34,7 @@ input[type="text"]::placeholder {
                 </div>
             </div>
             <div class="row portfolio-row">
-            {% for post in games %}
+            {% for post in games %}{% unless post.in-development %}
                 <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -64,7 +64,7 @@ input[type="text"]::placeholder {
                     </div>
                     {% endif %}
                 </div>
-            {% endfor %}
+            {% endunless %}{% endfor %}
             </div>
 
             <div class="row">
@@ -73,14 +73,27 @@ input[type="text"]::placeholder {
                 </div>
             </div>
             <div class="row">
+            {% for post in games %}{% if post.in-development %}
                 <div class="col-sm-6 portfolio-item">
-                    <div class="portfolio-mystery portfolio-mystery-deep">
-                        <i class="fa fa-question"></i>
-                    </div>
+                    <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/{{ post.thumbnail }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                    </a>
                     <div class="portfolio-caption">
-                        <h4>PROJECT FATHOM</h4>
+                        <h4>{{ post.title }}</h4>
+                        {% if post.coming-soon %}<p class="portfolio-date">{{ post.coming-soon }}</p>{% endif %}
+                        {% if post.blurb %}<p class="text-muted">{{ post.blurb }}</p>{% endif %}
+                    </div>
+                    <iframe class="portfolio-steam" src="https://store.steampowered.com/widget/{{ post.steam-appid }}/?utm_source=pawsmonautwebsite" frameborder="0" height="190"></iframe>
+                    <div class="portfolio-buttons">
+                        <a class="btn btn-default" href="{{ post.presskit }}">PRESS KIT</a>
                     </div>
                 </div>
+            {% endif %}{% endfor %}
                 <div class="col-sm-6 portfolio-item">
                     <div class="portfolio-mystery portfolio-mystery-stars">
                         <i class="fa fa-question"></i>

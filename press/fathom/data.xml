@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <game>
   <title>FATHOM</title>
-  <release-date>To be announced</release-date>
-  <website></website>
+  <release-date>2027</release-date>
+  <website>https://store.steampowered.com/app/4961680/FATHOM/</website>
 
   <press-copy-request></press-copy-request>
 
   <platforms>
     <platform>
-      <name>To be announced</name>
-      <link></link>
+      <name>PC (Steam)</name>
+      <link>https://store.steampowered.com/app/4961680/FATHOM/</link>
     </platform>
   </platforms>
 
@@ -21,7 +21,7 @@
   </prices>
 
   <description>
-    As-yet unannounced, FATHOM is a laid-back desktop companion idler game set in an alien ocean.
+    FATHOM is a laid-back desktop companion idler game set beneath the waves of an alien ocean.
   </description>
 
   <credits>

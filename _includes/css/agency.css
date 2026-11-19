@@ -990,6 +990,21 @@ ul.social-buttons li a:active {
     margin-bottom: 30px;
 }
 
+/* Links in a game's description; the global link colour is near-white */
+.portfolio-modal .modal-content p a {
+    color: #{{ site.data.template.color.tertiary }};
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #{{ site.data.template.color.secondary }};
+    text-decoration-thickness: 2px;
+}
+
+.portfolio-modal .modal-content p a:hover,
+.portfolio-modal .modal-content p a:focus {
+    color: #{{ site.data.template.color.secondary-dark }};
+    text-decoration-color: #{{ site.data.template.color.tertiary }};
+}
+
 .portfolio-modal .modal-content p.item-intro {
     margin: 20px 0 30px;
     font-family: {{ site.data.template.font.secondary }};
