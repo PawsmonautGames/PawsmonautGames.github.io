@@ -10,7 +10,7 @@ alt: image-alt
 steam-appid: 2541530
 release-date: March 6, 2026
 review-score: Very Positive
-review-summary: 94% of 1,864 Steam reviews
+review-summary: 94% of 1,865 Steam reviews
 presskit: /press/product/
 project-date: April 2014
 client: Start Bootstrap
