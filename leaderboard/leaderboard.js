@@ -330,17 +330,17 @@
   // A season's board gets its tab at the moment the season opens, before
   // anyone has a run on it (the API lists only boards that hold runs), with how
   // it ranks in case the API has not said. Winter Solstice opens at 4 PM UK
-  // time on 29 November 2026: GMT then, so 16:00 UTC. Co-op comes with it,
+  // time on 28 November 2026: GMT then, so 16:00 UTC. Co-op comes with it,
   // so the co-op boards open then too. A page left open across the moment
   // gains the tabs without a reload.
-  var WINTER = Date.UTC(2026, 10, 29, 16, 0, 0);
+  var WINTER = Date.UTC(2026, 10, 28, 16, 0, 0);
   var OPENINGS = [
     { board: "season:winter", at: WINTER, ranked_by: "time" },
     { board: "coop:standard", at: WINTER, ranked_by: "time" },
     { board: "coop:winter", at: WINTER, ranked_by: "time" },
   ];
 
-  // ?demo&now=2026-11-29T15:59:50Z pretends the clock reads that, and runs on
+  // ?demo&now=2026-11-28T15:59:50Z pretends the clock reads that, and runs on
   // from it, for checking an opening without waiting for it.
   var skew = 0;
   var pretend = demo && (location.search.match(/[?&]now=([0-9T:.\-]+Z)/) || [])[1];
